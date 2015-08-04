@@ -12,7 +12,7 @@ development:
   database: borges-mysql2_development
   pool: 5
   username: borges
-  password:
+  password: test
   socket: /tmp/mysql.sock
 
 # Warning: The database defined as "test" will be erased and
@@ -25,7 +25,7 @@ test:
   database: borges-mysql2_test
   pool: 5
   username: borges
-  password:
+  password: test
   socket: /tmp/mysql.sock
 
 production:

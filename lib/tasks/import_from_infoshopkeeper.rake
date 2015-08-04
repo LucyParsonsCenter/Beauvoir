@@ -3,9 +3,9 @@ namespace :infoshopkeeper do
   desc "Import from infoshopkeeper"
   task :import => :environment do
     
-    isk_db="isk"
-    isk_db_user="isk"
-    isk_db_password="isk"
+    isk_db="infoshopkeeper"
+    isk_db_user="infoshopkeeper"
+    isk_db_password="test"
 
     only_do_books=true
 
