@@ -17,10 +17,10 @@ vagrant up
 ```
 
 to bring up the vm. You can connect manually by doing `vagrant ssh`, which
-is useful to start the Rails server. It should then start in a test mode.
-Note: it will take a *long* time to start up the first time - it needs to
-download a starter ubuntu image and then do the provisioning (installing
-packages and gems to get Rails in a runnable state).
+is useful to start the Rails server. It should then start in a test mode. Note:
+it will take a *long* time to start up the first time you do `vagrant up`- it
+needs to download a starter ubuntu image and then do the provisioning
+(installing packages and gems to get Rails in a runnable state).
 
 After the first run it should be pretty fast! If you're done developing
 for the day you can do 

@@ -21,6 +21,9 @@ db/*.sqlite3
 /log/*
 /tmp/*
 
+# vagrant stuff
+.vagrant/*
+
 # various artifacts
 **.war
 *.gz
