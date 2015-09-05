@@ -11,7 +11,7 @@ development:
   reconnect: false
   database: borgesdev
   pool: 5
-  username: borgesdev
+  username: borges
   password: password
   socket: /var/run/mysqld/mysqld.sock
 
@@ -24,7 +24,7 @@ test:
   reconnect: false
   database: borges
   pool: 5
-  username: borgestest
+  username: borges
   password: password
   socket: /var/run/mysqld/mysqld.sock
 
@@ -34,6 +34,6 @@ production:
   reconnect: false
   database: borgesprod
   pool: 5
-  username: borgesprod
+  username: borges
   password: password
   socket: /var/run/mysqld/mysqld.sock
