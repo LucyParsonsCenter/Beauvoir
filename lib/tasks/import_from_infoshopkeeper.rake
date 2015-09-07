@@ -3,14 +3,14 @@ namespace :infoshopkeeper do
   desc "Import from infoshopkeeper"
   task :import => :environment do
     
-    isk_db="infoshopkeeper"
-    isk_db_user="infoshopkeeper"
-    isk_db_password="test"
+    isk_db="isk"
+    isk_db_user="isk"
+    isk_db_password="isk"
 
     only_do_books=true
 
     puts "Connecting to old database...."
-    DB = Sequel.connect(:adapter => 'mysql', :user => isk_db_user, :host => 'localhost', :database => isk_db,:password=>isk_db_password)    
+    DB = Sequel.connect(:adapter => 'mysql2', :user => isk_db_user, :host => 'localhost', :database => isk_db,:password=>isk_db_password)    
     puts "Success!"			 
     
 
@@ -44,6 +44,8 @@ namespace :infoshopkeeper do
         new_publisher=Publisher.find_or_create_by_name(t[:publisher])
       end
 
+      puts "past publisher!"
+
       old_isbn=Lisbn.new(t[:isbn])
       
       if old_isbn.valid?
@@ -76,6 +78,8 @@ namespace :infoshopkeeper do
       #each book gets made into a copy attached to that edition
 
       books_for_title=books.where(:title_id => t[:id])
+
+
       
       books_for_title.each do |b|
         
@@ -85,37 +89,58 @@ namespace :infoshopkeeper do
                             :deinventoried_when => b[:sold_when],
                             :status => b[:status],
                             :owner => (Owner.find_or_create_by_name(b[:owner]) unless b[:owner].blank?),
-                            :distributor => (Distributor.find_or_create_by_name(b[:distributor]) unless b[:distributor].blank?),
                             :notes => b[:notes],
                             :is_used => (b[:distributor] == "used" ? true : false),
                             )
+
+        distrib = Distributor.find_or_create_by_name(b[:distributor]) unless b[:distributor].blank?
+        if distrib
+          distrib.copies << new_copy
+        end
         
         unless new_copy.valid?
           puts new_copy.errors.messages
         end
 
+        puts "get down here"
         new_edition.copies << new_copy
 
+        puts new_copy.price
+        puts new_copy.price_in_cents
+
+        puts "get down here!"
         new_edition.list_price=new_edition.copies.collect{|c| c.price }.max
+        puts "get down here!"
                                        
       end
       
       new_title.editions << new_edition
 
+      puts "get down here!"
       author_titles = author_title.where(:title_id => t[:id])
       authors_for_title=author_titles.collect {|a_t| authors.where(:id => a_t[:author_id]).first}
       
+      puts "author stuff!"
+
+
+
+      # sunspot was having trouble here, commented out the searchable block
+
       authors_for_title.each do |a|
         new_title.authors << Author.find_or_create_by_full_name(a[:author_name])
       end
 
+      puts "tag stuff!"
       
       tags=titletags.where(:title_id => t[:id],:tagkey => "section")
       tags.each do |tag|
         new_title.categories << Category.find_or_create_by_name(tag[:tagvalue])
       end
+
+      puts "post tag stuff!"
       
       new_title.save!
+      puts "did we save it?"
 
     end
        
