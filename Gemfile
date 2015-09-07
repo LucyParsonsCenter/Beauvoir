@@ -62,7 +62,7 @@ gem "mini_magick"
 gem 'kaminari'
 gem "bootstrap-switch-rails", "= 0.1.1"
 gem 'sequel'
-gem 'mysql'
+gem 'mysql2'
 gem 'googlebooks'
 gem 'sunspot_rails'
 gem 'sunspot_solr'
