@@ -48,6 +48,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     cp config/database.test.yml config/database.yml
     cp config/application.test.yml config/application.yml
 
+    git clone https://github.com/aliceriot/borges-utils ~/borges-utils
 
     source ~/.profile
     if [ -z "$DEVISE_TOKEN" ]; then
