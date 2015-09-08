@@ -3,6 +3,7 @@ class Title < ActiveRecord::Base
 
   searchable do
     text :title,:introduction,:description
+
     text :authors do
       authors.map { |a| a.full_name }
     end  
@@ -14,6 +15,7 @@ class Title < ActiveRecord::Base
     text :publisher do
       editions.map { |e| e.publisher }
     end  
+
     text :distributor do
       copies.map { |c| c.invoice_line_item.invoice.distributor unless c.invoice_line_item.nil? }
     end  
@@ -29,8 +31,6 @@ class Title < ActiveRecord::Base
     integer :copies_in_stock do  
       copies.where(status: "STOCK").length
     end
-
-
   end
 
   has_many :contributions

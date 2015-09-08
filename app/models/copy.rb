@@ -1,4 +1,6 @@
 class Copy < ActiveRecord::Base
+  attr_accessible :cost_in_cents, :is_used, :notes, :price_in_cents , :cost, :price, :inventoried_when, :deinventoried_when, :status, :owner,:edition_id,:invoice_line_item_id, :owner_id
+
   belongs_to :edition, :touch => true
   has_one :title, :through => :edition
   belongs_to :invoice_line_item
@@ -8,7 +10,6 @@ class Copy < ActiveRecord::Base
   has_one :return_order_line_item
   has_one :return_order,:through => :return_order_line_item 
   belongs_to :owner
-  attr_accessible :cost_in_cents, :is_used, :notes, :price_in_cents , :cost, :price, :inventoried_when, :deinventoried_when, :status, :owner,:edition_id,:invoice_line_item_id, :owner_id
   has_many :inventory_copy_confirmations  
   monetize :cost_in_cents, :as => "cost"
   monetize :price_in_cents, :as => "price"
