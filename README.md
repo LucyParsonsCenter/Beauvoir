@@ -14,4 +14,4 @@ There's a short [install guide](docs/INSTALLATION.md) and a longer
 
 See LICENSE-GPLv3.txt
 
-
+Free as in the commons.

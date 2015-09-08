@@ -18,7 +18,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.provision :shell, privileged: true, inline: <<-SCRIPT
     apt-get -y update
     apt-get -y upgrade
-    apt-get -y install ruby-railties git rbenv bundler build-essential cmake ruby-rmagick ruby-build jvm-7-avian-jre
+    apt-get -y install ruby-railties git rbenv bundler build-essential cmake ruby-rmagick ruby-build jvm-7-avian-jre rmagic imagemagick libmagickwand-dev 
   SCRIPT
 
   # configure database
@@ -49,6 +49,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     cp config/application.test.yml config/application.yml
 
     git clone https://github.com/aliceriot/borges-utils ~/borges-utils
+
+    gpg --keyserver pgp.mit.edu --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
+    \curl -sSL https://get.rvm.io | bash -s stable
+    source ~/.rvm/scripts/rvm
+    rvm install 2.1.0
+    rvm use 2.1.0
 
     source ~/.profile
     if [ -z "$DEVISE_TOKEN" ]; then
