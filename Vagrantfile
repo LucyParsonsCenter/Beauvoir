@@ -18,7 +18,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.provision :shell, privileged: true, inline: <<-SCRIPT
     apt-get -y update
     apt-get -y upgrade
-    apt-get -y install ruby-railties git rbenv bundler build-essential cmake ruby-rmagick ruby-build jvm-7-avian-jre rmagic imagemagick libmagickwand-dev solr-jetty silversearcher-ag
+    apt-get -y install ruby-railties git rbenv bundler build-essential cmake ruby-rmagick ruby-build jvm-7-avian-jre rmagic imagemagick libmagickwand-dev libjetty-extra-java libtomcat7-java solr-jetty silversearcher-ag nodejs-legacy npm
   SCRIPT
 
   # configure database
@@ -44,6 +44,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     echo "\n\nconfiguring rails environment..."
     rbenv install 2.0.0
     rbenv global 2.0.0
+    rm -r solr
     cd /vagrant && bundle install
     cp config/database.test.yml config/database.yml
     cp config/application.test.yml config/application.yml
@@ -69,6 +70,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     export SECRET_TOKEN="f390931c0d2899dc13ca0ca6465903eee6b4e8c1"
 
     bundle exec rake db:schema:load
+    rails generate sunspot_rails:install
+
     echo "done."
   SCRIPT
 
