@@ -166,5 +166,4 @@ class Title < ActiveRecord::Base
     (stock_on_shelves_for+took_this_long_to_sell+took_this_long_to_lose) / (copies.instock.count+copies.sold.count+copies.lost.count) 
 
   end
-  
 end

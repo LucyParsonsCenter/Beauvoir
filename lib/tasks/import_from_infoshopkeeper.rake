@@ -82,7 +82,9 @@ namespace :infoshopkeeper do
 
       
       books_for_title.each do |b|
-        
+        # new_copy = Copy.new(:cost => book[:wholesale], :price => book[:listprice], :inventoried_when => book[:inventoried_when], :deinventoried_when => book[:sold_when], :status => book[:status], :owner => (Owner.find_or_create_by_name(book[:owner]) unless book[:owner].blank?), :notes => book[:notes], :is_used => (book[:distributor] == "used" ? true : false))
+
+
         new_copy = Copy.new(:cost => b[:wholesale],
                             :price => b[:listprice],
                             :inventoried_when => b[:inventoried_when],
@@ -138,7 +140,9 @@ namespace :infoshopkeeper do
       end
 
       puts "post tag stuff!"
-      
+
+      puts new_edition.copies.length
+
       new_title.save!
       puts "did we save it?"
 
