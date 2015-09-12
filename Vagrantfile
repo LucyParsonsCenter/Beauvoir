@@ -18,7 +18,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.provision :shell, privileged: true, inline: <<-SCRIPT
     apt-get -y update
     apt-get -y upgrade
-    apt-get -y install ruby-railties git rbenv bundler build-essential cmake ruby-rmagick ruby-build jvm-7-avian-jre rmagic imagemagick libmagickwand-dev 
+    apt-get -y install ruby-railties git rbenv bundler build-essential cmake ruby-rmagick ruby-build jvm-7-avian-jre rmagic imagemagick libmagickwand-dev solr-jetty
   SCRIPT
 
   # configure database
