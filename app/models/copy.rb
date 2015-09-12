@@ -19,6 +19,7 @@ class Copy < ActiveRecord::Base
   scope :returned, where("status"=>"RETURNED")
   scope :sold, where("status"=>"SOLD")
   
+  before_validation :set_cost
   after_save :reindex_title
 
   def info
@@ -30,6 +31,13 @@ class Copy < ActiveRecord::Base
     self.status="SOLD"
     self.deinventoried_when=DateTime.now
     self.save!
+  end
+
+  def set_cost
+    unless self.cost
+      self.cost = 0
+      self.cost_in_cents = 0
+    end
   end
   
   def do_return()
@@ -45,8 +53,6 @@ class Copy < ActiveRecord::Base
       self.save!
     end
   end
-
-
 
   def mark_lost()
     if self.status=="STOCK"
@@ -66,7 +72,4 @@ class Copy < ActiveRecord::Base
   def reindex_title 
     self.title.save! # does it reindex?
   end
-
-
-
 end
