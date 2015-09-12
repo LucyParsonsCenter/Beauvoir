@@ -93,3 +93,4 @@ pickle-email-*.html
 /solr/pids
 .ruby-version
 /solr/*
+config/sunspot.yml
