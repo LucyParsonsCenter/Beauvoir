@@ -44,8 +44,6 @@ namespace :infoshopkeeper do
         new_publisher=Publisher.find_or_create_by_name(t[:publisher])
       end
 
-      puts "past publisher!"
-
       old_isbn=Lisbn.new(t[:isbn])
       
       if old_isbn.valid?
@@ -76,15 +74,8 @@ namespace :infoshopkeeper do
                               :remote_cover_url => new_cover_url)
       
       #each book gets made into a copy attached to that edition
-
       books_for_title=books.where(:title_id => t[:id])
-
-
-      
       books_for_title.each do |b|
-        # new_copy = Copy.new(:cost => book[:wholesale], :price => book[:listprice], :inventoried_when => book[:inventoried_when], :deinventoried_when => book[:sold_when], :status => book[:status], :owner => (Owner.find_or_create_by_name(book[:owner]) unless book[:owner].blank?), :notes => book[:notes], :is_used => (book[:distributor] == "used" ? true : false))
-
-
         new_copy = Copy.new(:cost => b[:wholesale],
                             :price => b[:listprice],
                             :inventoried_when => b[:inventoried_when],
@@ -96,6 +87,7 @@ namespace :infoshopkeeper do
                             )
 
         distrib = Distributor.find_or_create_by_name(b[:distributor]) unless b[:distributor].blank?
+        
         if distrib
           distrib.copies << new_copy
         end
@@ -104,62 +96,26 @@ namespace :infoshopkeeper do
           puts new_copy.errors.messages
         end
 
-        puts "get down here"
         new_edition.copies << new_copy
 
-        puts new_copy.price
-        puts new_copy.price_in_cents
-
-        puts "get down here!"
         new_edition.list_price=new_edition.copies.collect{|c| c.price }.max
-        puts "get down here!"
-                                       
       end
       
       new_title.editions << new_edition
 
-      puts "get down here!"
       author_titles = author_title.where(:title_id => t[:id])
       authors_for_title=author_titles.collect {|a_t| authors.where(:id => a_t[:author_id]).first}
       
-      puts "author stuff!"
-
-
-
-      # sunspot was having trouble here, commented out the searchable block
-
       authors_for_title.each do |a|
         new_title.authors << Author.find_or_create_by_full_name(a[:author_name])
       end
 
-      puts "tag stuff!"
-      
       tags=titletags.where(:title_id => t[:id],:tagkey => "section")
       tags.each do |tag|
         new_title.categories << Category.find_or_create_by_name(tag[:tagvalue])
       end
 
-      puts "post tag stuff!"
-
-      puts new_edition.copies.length
-
       new_title.save!
-      puts "did we save it?"
-
     end
-       
   end
-
 end
-
-
-
-
-
-
-
-
-
-
-
-
