@@ -20,7 +20,7 @@ class Copy < ActiveRecord::Base
   scope :sold, where("status"=>"SOLD")
   
   before_validation :set_cost
-  after_save :reindex_title
+  #after_save :reindex_title
 
   def info
     "$#{price}" + (notes || is_used? ? " [#{notes} #{'USED' if is_used?}]" : "" )

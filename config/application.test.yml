@@ -11,5 +11,5 @@ ADMIN_NAME: First User
 ADMIN_EMAIL: test.email@test.biz
 ADMIN_PASSWORD: test
 ROLES: [admin, user, VIP]
-THEME: "default"
+THEME: "redemmas"
 SITENAME: "Borges - Development"
