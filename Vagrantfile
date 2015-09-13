@@ -45,6 +45,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     rbenv install 2.0.0
     rbenv global 2.0.0
     rm -r solr
+    rm config/sunspot.yml
     cd /vagrant && bundle install
     cp config/database.test.yml config/database.yml
     cp config/application.test.yml config/application.yml
