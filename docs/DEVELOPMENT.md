@@ -59,5 +59,5 @@ you're in the app directory the command to start it is:
 rake sunspot:solr:start
 ```
 
-It should be started automatically when the VM spins up, but strang things
-happen sometimes...
+It should be started automatically when the VM spins up, but strange
+things happen sometimes...
