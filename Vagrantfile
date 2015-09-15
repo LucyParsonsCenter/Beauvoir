@@ -33,20 +33,17 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     echo "create database borgesdev" | mysql -u root --password=abc123
     echo "create database borgestest" | mysql -u root --password=abc123
     echo "create database borgesprod" | mysql -u root --password=abc123
-    echo "grant all privileges on borgesdev.* to borges identified by 'password'" | mysql -u root --password='abc123'
-    echo "grant all privileges on borgestest.* to borges identified by 'password'" | mysql -u root --password='abc123'
-    echo "grant all privileges on borgesprod.* to borges identified by 'password'" | mysql -u root --password='abc123'
+    
+    echo "grant all privileges on borgesdev.* to 'borges'@'%' identified by 'password'" | mysql -u root --password='abc123'
+    echo "grant all privileges on borgestest.* to 'borges'@'%' identified by 'password'" | mysql -u root --password='abc123'
+    echo "grant all privileges on borgesprod.* to 'borges'@'%' identified by 'password'" | mysql -u root --password='abc123'
     echo "done."
   SCRIPT
 
   # as regular user (vagrant)
   config.vm.provision :shell, privileged: false, inline: <<-SCRIPT
-    echo "\n\nconfiguring rails environment..."
-    rm -r solr
-    rm config/sunspot.yml
-    cp config/database.test.yml config/database.yml
-    cp config/application.test.yml config/application.yml
-
+    echo "\n\nconfiguring ruby/rails environment..."
+    
     git clone https://github.com/aliceriot/borges-utils ~/borges-utils
 
     gpg --keyserver pgp.mit.edu --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
@@ -55,7 +52,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     rvm install 2.1.0
     rvm use 2.1.0
     gem install bundler
-    cd /vagrant && bundle install
+
     source ~/.profile
     if [ -z "$DEVISE_TOKEN" ]; then
         echo 'export DEVISE_TOKEN="a4ed267775e7b70b4b1fbc86520495ce0df1e5e7c3e3091374e47eb9c9051d3874f2186d7b99d7b6f6c67fba1b1cb990a56a9919418c36c70ba4e745ada3d0d7"' >> ~/.profile
@@ -69,9 +66,22 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     export SECRET_TOKEN="f390931c0d2899dc13ca0ca6465903eee6b4e8c1"
 
     cd /vagrant
-    bundle exec rake db:schema:load
-    rails generate sunspot_rails:install
+    bundle install
 
+    rm -r solr
+    rm config/sunspot.yml
+
+    cp config/database.test.yml config/database.yml
+    cp config/application.test.yml config/application.yml
+
+    # bundle exec rake db:create
+    bundle exec rake db:schema:load
+    bundle exec rake db:migrate
+    
+    rails generate sunspot_rails:install
+    rake sunspot:solr:start
+
+    echo "cd /vagrant" >> ~/.profile
     echo "done."
   SCRIPT
 
