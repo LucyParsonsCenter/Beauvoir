@@ -6,7 +6,10 @@
   = paginate @titles
 
 %div.span3
-  = link_to "New Title", new_title_path if can? :create Title
+  %div.icon-plus
+    = link_to "New Title", new_title_path if can? :create Title
+    = semantic_form_for @title do |t|,
+
 
 
 
