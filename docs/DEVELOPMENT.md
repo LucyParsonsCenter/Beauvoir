@@ -50,6 +50,8 @@ on).
 
 ##App details
 
+Borges targets Ruby 2.1.0 - the VM installs this automatically.
+
 In order for the app to work the text search engine has to be running. If
 you're in the app directory the command to start it is:
 
