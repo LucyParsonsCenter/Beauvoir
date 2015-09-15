@@ -78,7 +78,5 @@ module Borges
 
     config.action_view.sanitized_allowed_tags = 'table', 'tr', 'td', 'iframe'
 
-
-
   end
 end
