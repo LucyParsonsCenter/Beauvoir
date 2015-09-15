@@ -1,4 +1,14 @@
-    <div class="span2">
+%div.span2
+
+%div.span7
+  %h1=Listing Titles
+  = @titles.each {|t| render t}
+  = paginate @titles
+
+%div.span3
+  = link_to "New Title", new_title_path if can? :create Title
+
+
 
 
     </div>
