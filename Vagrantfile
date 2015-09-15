@@ -82,6 +82,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     rake sunspot:solr:start
 
     echo "cd /vagrant" >> ~/.profile
+    echo "rake sunspot:solr:start" >> ~/.profile
     echo "done."
   SCRIPT
 
