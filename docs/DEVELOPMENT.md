@@ -47,3 +47,15 @@ The shared files are in the VM in `/vagrant` - anything that's in the repo
 is shared with the VM. This makes it easy to develop in your local
 environment and share changes with the VM (without restarting rails and so
 on).
+
+##App details
+
+In order for the app to work the text search engine has to be running. If
+you're in the app directory the command to start it is:
+
+```ruby
+rake sunspot:solr:start
+```
+
+It should be started automatically when the VM spins up, but strang things
+happen sometimes...
