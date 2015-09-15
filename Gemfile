@@ -57,6 +57,8 @@ gem 'rmagick'
 gem 'best_in_place'
 gem "default_value_for"
 gem 'haml'
+gem 'formtastic', '~> 3.0'
+gem 'activeadmin', '~> 0.6'
 
 gem 'ckeditor', "= 4.0.2"
 gem "mini_magick"
