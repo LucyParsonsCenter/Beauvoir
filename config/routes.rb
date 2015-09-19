@@ -228,10 +228,10 @@ Borges::Application.routes.draw do
   get '/cart', :to => "shopping_carts#current"
   put '/update_cart', :to => "shopping_carts#update_current"
 
-  authenticated :user do
-    root :to=>'home#frontpage' 
-  end
-  root :to=>'home#frontpage' 
+#   authenticated :user do
+#     root :to=>'home#frontpage' 
+#   end
+#   root :to=>'home#frontpage' 
 
   devise_for :users
   resources :users
