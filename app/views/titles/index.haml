@@ -1,18 +1,19 @@
-%div.span2
+#span2
 
-%div.span7
-  %h1=Listing Titles
-  = @titles.each {|t| render t}
-  = paginate @titles
+#span7
+  %h1 Listing Titles
+  - @titles.each do |title|
+    = render title
+    = paginate @titles
 
-%div.span3
-  %div.icon-plus
-    = link_to "New Title", new_title_path if can? :create Title
-    = semantic_form_for @title do |t|,
+#span3
+  -# .
+      -# <%=  mylinkbutton "<i class='icon-plus'></i> New Title", new_title_path   if can? :create, Title %>
 
-
-
-
+        -# <%= form_tag '/titles',method: :get,:html=>{:class=>"form-horizontal"} %>
+.form-horizontal
+  = form_for @titles, method: :get,
+ 
 
     </div>
 
@@ -37,4 +38,4 @@
       </form>
 
   
-
+   
