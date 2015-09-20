@@ -8,9 +8,4 @@ class SaleOrderLineItem < ActiveRecord::Base
   def sell
     copy.sell(sale_price)
   end
-
-  
-
-
-
 end

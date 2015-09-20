@@ -69,7 +69,6 @@ gem 'jquery-datetimepicker-rails'
 gem "progress_bar"
 gem 'lazy_high_charts'
 gem 'ri_cal', :git=>"git://github.com/johm/ri_cal"
-gem 'instagram'
 gem "simple_calendar"
 gem "mediaelement_rails"
 gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'

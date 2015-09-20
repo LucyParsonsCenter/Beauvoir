@@ -109,4 +109,10 @@ class SaleOrdersController < ApplicationController
       format.html { redirect_to @sale_order, notice: 'Sale was successfully posted!' }
     end
   end
+  private
+
+  def sale_order_params
+    params.require( :customer_po)
+    params.permit( :customer_po, :discount_percent, :posted,:notes)
+  end
 end
