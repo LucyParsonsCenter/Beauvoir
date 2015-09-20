@@ -108,10 +108,6 @@ CategoryTitleListMembership.blueprint do
   # Attributes here
 end
 
-ShoppingCart.blueprint do
-  # Attributes here
-end
-
 ShoppingCartLineItem.blueprint do
   # Attributes here
 end

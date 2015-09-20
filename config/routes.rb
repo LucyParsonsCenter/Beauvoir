@@ -1,12 +1,10 @@
 Borges::Application.routes.draw do
 
-
   resources :inventory_copy_confirmations do 
     member do
       post :probablyreturned
     end
   end
-
 
   resources :inventories do
     member do 
@@ -17,27 +15,10 @@ Borges::Application.routes.draw do
     end
   end
 
-  resources :event_shifts
-
-
-  resources :event_staffers do
-    get :autocomplete_event_staffer_name, :on => :collection
-  end
-
-
-  resources :events do 
-    get :autocomplete_event_location_title, :on => :collection
-  end
-
-
-  resources :event_locations
-
-
   resources :category_title_list_memberships
 
 
   resources :sale_order_line_items
-
  
   resources :sale_orders do
     member do
@@ -46,7 +27,6 @@ Borges::Application.routes.draw do
   end
 
   resources :return_order_line_items
-
  
   resources :return_orders do
     member do
@@ -55,32 +35,12 @@ Borges::Application.routes.draw do
 
   end
 
-
-
   resources :owners do
     get :autocomplete_owner_name, :on => :collection
   end
 
-
   resources :title_category_memberships
-
-
   resources :categories
-
-
-  resources :post_title_list_links
-
-
-  resources :post_title_links
-
-
-  resources :create_post_title_links
-
-
-  resources :post_categories
-
-  resources :posts
-
   resources :title_list_memberships
 
 
@@ -95,22 +55,15 @@ Borges::Application.routes.draw do
 
   mount Ckeditor::Engine => '/ckeditor'
 
-  resources :pages  do 
-    get :autocomplete_parent_title, :on => :collection
-  end
-
-
   resources :publishers do 
     member do
       put :merge_editions_from
     end
   end
 
-
   resources :customers do 
     get :autocomplete_customer_name, :on => :collection
   end
-
 
   resources :distributors do
     member do
@@ -118,8 +71,6 @@ Borges::Application.routes.draw do
       get :chart
     end
   end
-
-
 
   resources :invoice_line_items
 
@@ -130,14 +81,12 @@ Borges::Application.routes.draw do
     end
   end
 
-
   resources :purchase_order_line_items do 
     member do
       get :hidden_actions 
       put :move_to_purchase_order
     end
   end
-
 
   resources :purchase_orders do 
     member do
@@ -148,7 +97,6 @@ Borges::Application.routes.draw do
     resources :purchase_order_line_items
   end
 
-
   resources :copies do 
     get :autocomplete,:on => :collection
     get :inventory_autocomplete,:on => :collection
@@ -157,7 +105,6 @@ Borges::Application.routes.draw do
     end
 
   end
-
 
   resources :editions do
     resources :copies
@@ -171,7 +118,6 @@ Borges::Application.routes.draw do
     end
   end
 
-
   resources :contributions do 
     get :autocomplete_author_full_name, :on => :collection
   end
@@ -182,10 +128,7 @@ Borges::Application.routes.draw do
     get :autocomplete_distributor_name, :on => :collection
     get :autocomplete_title_list_name, :on => :collection
     get :autocomplete_category_name, :on => :collection
-
   end
-
-
   
   get 'authors/search' => 'authors#search'
   resources :authors
@@ -202,6 +145,7 @@ Borges::Application.routes.draw do
   get '/book/:isbn', :to => 'editions#byisbn'
   get '/book/', :to => 'editions#byisbn'
 
+  get '/checkout', :to => 'home#checkout'
   get '/dashboard/search', :to => 'dashboard#search'
   get '/dashboard/:action', :to => 'dashboard'
   get '/dashboard/', :to => 'dashboard#index'
