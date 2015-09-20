@@ -1,0 +1,43 @@
+= link_to "Borges", "/", :class => 'brand'
+
+
+%ul.nav
+  - if user_signed_in?
+    %li= link_to 'Logout', destroy_user_session_path, :method=>'delete'
+    %li= link_to 'Edit account', edit_user_registration_path
+    - if current_user.has_role? :admin
+      %li= link_to 'Admin', users_path 
+  - else
+    %li= link_to 'Login', new_user_session_path %>
+  %li.dropdown
+    %a.dropdown-toggle href="#", data-toggle="dropdown"
+      Inventory
+      <b class="caret"></b>
+    </a>
+    %ul.dropdown-menu
+      %li= link_to 'Dashboard', '/dashboard' 
+      %li= link_to 'Make a sale', new_sale_order_path() 
+      %li= link_to  'Purchase orders', purchase_orders_path()  
+      %li= link_to  'Invoices', invoices_path()  
+      %li= link_to  'Search titles', "/dashboard/search"  
+      %li= link_to  'Daily sales', "/daily"  
+      %li= link_to  'Sales report', "/sales"  
+      %li= link_to  'Consignment', "/consignment"  
+      %li= link_to  'Purchase Summary', "/purchases_by_date_and_owner"  
+      %li= link_to  'Flow by Owner', "/ownerflow"  
+      %li= link_to  'Inventory value', "/inventory_value_by_date_and_owner"  
+      %li= link_to  'Inventory by owner', "/inventory_report_by_owner"  
+      %li= link_to  'Returns', return_orders_path()  
+      %li= link_to  'Publishers', publishers_path()  
+      %li= link_to  'Distributors', distributors_path()  
+      %li= link_to  'Sections', categories_path()  
+      %li= link_to  'Customers', customers_path()  
+      %li= link_to  'Inventories', inventories_path()  
+      %li= link_to  'Online orders', shopping_carts_path()  
+      %li= link_to  'ABA Report', '/dashboard/report_aba.csv',:target=>'_blank'  
+      %li= link_to 'Content Management', '/content'
+      %lI= link_to 'Calendar', '/manage_calendar' 
+
+
+  - else 
+    %li= link_to 'Sign up', new_user_registration_path
