@@ -17,7 +17,6 @@ Borges::Application.routes.draw do
 
   resources :category_title_list_memberships
 
-
   resources :sale_order_line_items
  
   resources :sale_orders do
@@ -43,15 +42,12 @@ Borges::Application.routes.draw do
   resources :categories
   resources :title_list_memberships
 
-
   resources :title_lists do 
     get :autocomplete_title_title, :on => :collection
     get :autocomplete_title_list_name, :on => :collection
   end
 
-
   resources :images
-
 
   mount Ckeditor::Engine => '/ckeditor'
 
@@ -146,6 +142,7 @@ Borges::Application.routes.draw do
   get '/book/', :to => 'editions#byisbn'
 
   get '/checkout', :to => 'home#checkout'
+  get '/help', :to => 'home#help'
   get '/dashboard/search', :to => 'dashboard#search'
   get '/dashboard/:action', :to => 'dashboard'
   get '/dashboard/', :to => 'dashboard#index'
