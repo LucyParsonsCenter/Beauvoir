@@ -83,4 +83,9 @@ class EventLocationsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  private
+  def event_location_params
+    params.require( :address, :description, :title, :url)
+    params.permit( :address, :description, :title, :url)
+  end
 end

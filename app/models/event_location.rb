@@ -1,5 +1,4 @@
 class EventLocation < ActiveRecord::Base
-  attr_accessible :address, :description, :title, :url
   has_many :events
   validates :title,:presence => true
 

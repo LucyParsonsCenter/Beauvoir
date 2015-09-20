@@ -111,4 +111,11 @@ class ShoppingCartLineItemsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  private
+
+  def shopping_cart_line_item_params
+    params.require( :cost_in_cents, :quantity)
+    params.permit( :cost_in_cents, :quantity)
+  end
 end

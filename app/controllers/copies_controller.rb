@@ -148,5 +148,9 @@ class CopiesController < ApplicationController
     params[:copy].delete :owner
    end
 
+  def copy_params
+    params.require( :cost_in_cents, :is_used, :notes, :price_in_cents , :cost, :price, :inventoried_when, :deinventoried_when, :status, :owner,:edition_id,:invoice_line_item_id, :owner_id)
+    params.permit( :cost_in_cents, :is_used, :notes, :price_in_cents , :cost, :price, :inventoried_when, :deinventoried_when, :status, :owner,:edition_id,:invoice_line_item_id, :owner_id)
+  end
   
 end

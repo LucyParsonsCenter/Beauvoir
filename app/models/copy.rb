@@ -1,5 +1,4 @@
 class Copy < ActiveRecord::Base
-  attr_accessible :cost_in_cents, :is_used, :notes, :price_in_cents , :cost, :price, :inventoried_when, :deinventoried_when, :status, :owner,:edition_id,:invoice_line_item_id, :owner_id
 
   belongs_to :edition, :touch => true
   has_one :title, :through => :edition
@@ -14,10 +13,10 @@ class Copy < ActiveRecord::Base
   monetize :cost_in_cents, :as => "cost"
   monetize :price_in_cents, :as => "price"
 
-  scope :instock, where("status"=>"STOCK")
-  scope :lost, where("status"=>"LOST")
-  scope :returned, where("status"=>"RETURNED")
-  scope :sold, where("status"=>"SOLD")
+  scope :instock, -> { where("status"=>"STOCK")}
+  scope :lost, -> { where("status"=>"LOST")}
+  scope :returned, -> { where("status"=>"RETURNED")}
+  scope :sold, -> { where("status"=>"SOLD")}
   
   before_validation :set_cost
   #after_save :reindex_title

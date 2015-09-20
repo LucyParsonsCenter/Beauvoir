@@ -156,5 +156,9 @@ class EventsController < ApplicationController
     end
   end
 
+  def event_params
+    params.require( :description, :event_end, :event_start, :published, :title, :event_location_id, :event_location,:picture,:remote_picture_url,:introduction,:internal_notes,:show_on_2640_page,:show_on_red_emmas_page,:event_setup_starts,:event_breakdown_ends,:event_shifts_attributes,:rental_payment_info,:facebook_url,:event_title_links_attributes)
+    params.permit( :description, :event_end, :event_start, :published, :title, :event_location_id, :event_location,:picture,:remote_picture_url,:introduction,:internal_notes,:show_on_2640_page,:show_on_red_emmas_page,:event_setup_starts,:event_breakdown_ends,:event_shifts_attributes,:rental_payment_info,:facebook_url,:event_title_links_attributes)
+  end
 
 end
