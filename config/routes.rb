@@ -158,13 +158,6 @@ Borges::Application.routes.draw do
   get '/daily/', :to => 'dashboard#daily', :as => "daily"
   get '/manage_calendar/', :to => 'dashboard#manage_calendar'
   get '/books/', :to => 'home#books'
-  get '/food/', :to => 'home#food'
-  get '/coffee/', :to => 'home#thread'
-  get '/thread/', :to => 'home#thread'
-  get '/blog/', :to => 'posts#index'
-  get '/2640/', :to => 'events#twentysixforty'
-  get '/newsletter/', :to => 'home#newsletter'
-  get '/pages/about/', :to => 'home#about'
   get '/cart', :to => "shopping_carts#current"
   put '/update_cart', :to => "shopping_carts#update_current"
   get '/', :to => "home#frontpage"
