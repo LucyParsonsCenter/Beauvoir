@@ -1,15 +1,16 @@
 - unless title.nil?
   .titleshort.row
     .span1
-      = link_to image_tag(title.latest_published_edition.cover_url, :class => :bookcover), title)
+      = link_to image_tag(title.latest_published_edition.cover_url, :class => :bookcover), title
 
-	-# image_tag(title.latest_published_edition.cover_url, :class => :bookcover),
-	-# title)  unless title.latest_published_edition.nil? || title.latest_published_edition.cover_url.nil?  %>
+    .span6
+      .hiddenactions
+        = link_to raw('<i class="icon-ok-circle"></i>'), hidden_actions_edition_path(title.latest_published_edition),  {:remote => true, 'data-toggle' =>  'modal', :role=>'button', 'data-target' => '#modal-window'}
+      = link_to "#{title.title}", title_path(title)
 
-  .span6
-    .hiddenactions
-      = link_to raw('<i class="icon-ok-circle"></i>'), hidden_actions_edition_path(title.latest_published_edition),  {:remote => true, 'data-toggle' =>  'modal', :role=>'button', 'data-target' => '#modal-window'}  
 
+-# image_tag(title.latest_published_edition.cover_url, :class => :bookcover),
+-# title)  unless title.latest_published_edition.nil? || title.latest_published_edition.cover_url.nil?  %>
 
   %h5= link_to title.lastest_edition.publisher.name, title.lastest_edition.publisher rescue ""
   %h2.booktitle= link_to title.title, title

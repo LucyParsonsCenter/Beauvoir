@@ -1,5 +1,4 @@
 class Title < ActiveRecord::Base
-
   searchable do
     text :title,:introduction,:description
 
@@ -39,8 +38,6 @@ class Title < ActiveRecord::Base
   has_many :purchase_order_line_items, :through => :editions
   has_many :title_lists,:through => :title_list_memberships
   has_many :title_list_memberships
-  has_many :post_title_links
-  has_many :posts, :through => :post_title_links 
   has_many :title_category_memberships
   has_many :categories,:through => :title_category_memberships
  
