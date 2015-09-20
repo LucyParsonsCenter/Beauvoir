@@ -1,4 +1,3 @@
-<% if can? :edit,ShoppingCart %>
 <% outstanding_carts=ShoppingCart.where(:submitted=>true,:deferred=>false,:completed=>false).order(:created_at) %>
 
 <% if !outstanding_carts.empty? %>
@@ -10,7 +9,6 @@
   </div>
   <% end %>
 </div>
-<% end %>
 <% end %>
 
 <%= link_to "Borges", "/", :class => 'brand' %>
@@ -66,17 +64,13 @@
 
       </li>
     <% end %>
-    <% if can? :edit,Page %>
       <li>
       <%= link_to 'Content Management', '/content' %>
       </li>
-    <% end %>
 
-    <% if can? :manage_calendar,:dashboard %>
       <li>
       <%= link_to 'Calendar', '/manage_calendar' %>
       </li>
-    <% end %>
 
 
   <% else %>
