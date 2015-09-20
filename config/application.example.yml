@@ -10,6 +10,6 @@
 ADMIN_NAME: First User
 ADMIN_EMAIL: user@example.com
 ADMIN_PASSWORD: changeme
-ROLES: [admin, user, VIP]
+ROLES: ["admin", "user", "VIP"]
 THEME: "default"
 SITENAME: "My Bookstore"

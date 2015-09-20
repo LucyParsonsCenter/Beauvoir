@@ -10,6 +10,6 @@
 ADMIN_NAME: First User
 ADMIN_EMAIL: test.email@test.biz
 ADMIN_PASSWORD: test
-ROLES: [admin, user, VIP]
+ROLES: ["admin", "user", "VIP"]
 THEME: "redemmas"
 SITENAME: "Borges - Development"
