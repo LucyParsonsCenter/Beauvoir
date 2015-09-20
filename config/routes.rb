@@ -162,7 +162,6 @@ Borges::Application.routes.draw do
   get '/coffee/', :to => 'home#thread'
   get '/thread/', :to => 'home#thread'
   get '/blog/', :to => 'posts#index'
-  get '/about/', :to => 'home#about'
   get '/2640/', :to => 'events#twentysixforty'
   get '/newsletter/', :to => 'home#newsletter'
   get '/pages/about/', :to => 'home#about'
