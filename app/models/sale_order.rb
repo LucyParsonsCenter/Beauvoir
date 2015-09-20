@@ -19,8 +19,6 @@ class SaleOrder < ActiveRecord::Base
     end
   end
 
-    
-
   def subtotal
     sale_order_line_items.inject(Money.new(0)) {|sum,soli| sum+soli.sale_price }
   end
@@ -34,15 +32,10 @@ class SaleOrder < ActiveRecord::Base
   def tax_amount
     subtotal_after_discount * (ENV["TAX"].to_f || 0.0)
   end
-
   
   def total
     Rails.cache.fetch("/sale_order/#{id}-#{updated_at}/total", :expires_in => 12.hours) do
       subtotal_after_discount + tax_amount
     end
   end
-
-
-
-
 end

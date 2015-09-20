@@ -1,12 +1,6 @@
 class SaleOrdersController < ApplicationController
   before_filter :authenticate_user! 
-  load_and_authorize_resource
-  
-  # We'll want to make it possible for users to create sales orders via the web
-  
 
-  # GET /sale_orders
-  # GET /sale_orders.json
   def index
     @sale_orders = SaleOrder.all
 
@@ -47,11 +41,7 @@ class SaleOrdersController < ApplicationController
   # POST /sale_orders
   # POST /sale_orders.json
   def create
-    @sale_order = SaleOrder.new(params[:sale_order])
-    @sale_order.from_pos=true  # we will use different controllers for web orders
-    @sale_order.from_web=false
-    @sale_order.posted=false
-    
+    @sale_order = SaleOrder.new(sale_order_params)
 
     respond_to do |format|
       if @sale_order.save
@@ -81,8 +71,6 @@ class SaleOrdersController < ApplicationController
     end
   end
 
-  # DELETE /sale_orders/1
-  # DELETE /sale_orders/1.json
   def destroy
     @sale_order = SaleOrder.find(params[:id])
     @sale_order.destroy
@@ -100,6 +88,7 @@ class SaleOrdersController < ApplicationController
       @sale_order.sale_order_line_items.each do |soli|
         soli.sell
       end
+
       @sale_order.posted=true
       @sale_order.user=current_user
       @sale_order.posted_when=DateTime.now
