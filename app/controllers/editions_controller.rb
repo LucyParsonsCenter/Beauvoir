@@ -182,12 +182,15 @@ class EditionsController < ApplicationController
 
 
 
-    private
+  private
 
   def hack_out_params
     params[:edition].delete :title
     params[:edition].delete :publisher
   end
 
-
+  def edition_params
+    params.require(:isbn10, :isbn13)
+    params.permit(:format, :in_print, :isbn10, :isbn13, :notes, :year_of_publication, :list_price, :cover ,:publisher_id,:remote_cover_url,:publisher,:title_id,:number)
+  end
 end

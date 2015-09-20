@@ -121,4 +121,8 @@ class TitleListsController < ApplicationController
   end
 
   
+  def title_list_params
+    params.require(:description, :name, :public, :title_list_memberships_attributes)
+    params.permit(:description, :name, :public, :title_list_memberships_attributes)
+  end
 end

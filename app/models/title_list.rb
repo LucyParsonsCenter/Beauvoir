@@ -1,5 +1,4 @@
 class TitleList < ActiveRecord::Base
-  attr_accessible :description, :name, :public, :title_list_memberships_attributes
   has_many :title_list_memberships
   has_many :titles, :through => :title_list_memberships
   

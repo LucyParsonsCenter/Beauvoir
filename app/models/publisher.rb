@@ -1,5 +1,4 @@
 class Publisher < ActiveRecord::Base
-  attr_accessible :description, :name, :notes
   has_many :editions
   has_many :titles, :through => :editions  
 

@@ -117,4 +117,11 @@ class AuthorsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  private
+
+  def author_params
+    params.require(:first_name, :last_name, :bio, :full_name)
+    params.permit(:first_name, :last_name, :bio, :full_name)
+  end
 end

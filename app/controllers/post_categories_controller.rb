@@ -83,4 +83,10 @@ class PostCategoriesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  private
+
+  def post_category_params
+    params.require( :name).permit(:name)
+  end
 end

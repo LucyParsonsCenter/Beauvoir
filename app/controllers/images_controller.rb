@@ -84,4 +84,10 @@ class ImagesController < ApplicationController
       format.json { head :no_content }
     end
   end
+  private
+  def image_params
+    params.require(:the_image, :title, :remote_the_image_url,:description,:link)
+    params.permit(:the_image, :title, :remote_the_image_url,:description,:link)
+  end
+
 end

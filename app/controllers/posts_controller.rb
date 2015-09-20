@@ -105,4 +105,9 @@ class PostsController < ApplicationController
     end
   end
 
+  def post_params
+    params.require( :body, :introduction, :slug, :title, :post_category_ids, :images_attributes, :post_title_links_attributes, :post_title_list_links_attributes,:published,:audio)
+    params.permit( :body, :introduction, :slug, :title, :post_category_ids, :images_ttributes, :post_title_links_attributes, :post_title_list_links_attributes,:published,:audio)
+  end
 end
+

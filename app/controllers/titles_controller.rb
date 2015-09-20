@@ -233,4 +233,10 @@ class TitlesController < ApplicationController
     end
   end
 
+  private
+  def title_params
+    params.require(:title)
+    params.permit(:title,:contributions_attributes,:authors_attributes,:editions_attributes,:description,:introduction, :title_list_memberships_attributes,:title_category_memberships_attributes)
+  end
+
 end

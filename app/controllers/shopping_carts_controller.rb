@@ -43,7 +43,7 @@ class ShoppingCartsController < ApplicationController
   # POST /shopping_carts
   # POST /shopping_carts.json
   def create
-    @shopping_cart = ShoppingCart.new(params[:shopping_cart])
+    @shopping_cart = ShoppingCart.new(user_params)
 
     respond_to do |format|
       if @shopping_cart.save
@@ -61,7 +61,7 @@ class ShoppingCartsController < ApplicationController
   def update
     @shopping_cart = ShoppingCart.find(params[:id])
     respond_to do |format|
-      if @shopping_cart.update_attributes(params[:shopping_cart])
+      if @shopping_cart.update(shopping_cart_params)
         format.html { redirect_to @shopping_cart, notice: 'Shopping cart was successfully updated.' }
         format.json { head :no_content }
       else
@@ -193,5 +193,10 @@ class ShoppingCartsController < ApplicationController
     end
   end
 
+  private
 
+  def shopping_cart_params
+    params.require(:session_id)
+    params.permit(:shipping_address_1, :shipping_address_2, :shipping_city, :shipping_name, :shipping_state, :shipping_zip,:shipping_method,:shipping_email,:shipping_subscribe,:notes)
+  end
 end

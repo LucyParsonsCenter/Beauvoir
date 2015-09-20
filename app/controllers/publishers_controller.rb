@@ -95,4 +95,10 @@ class PublishersController < ApplicationController
       format.json { head :no_content }
     end
   end
+  private
+
+  def publisher_params
+    params.require(:description, :name, :notes)
+    params.permit(:description, :name, :notes)
+  end
 end

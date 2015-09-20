@@ -1,5 +1,4 @@
 class Category < ActiveRecord::Base
-  attr_accessible :description, :image, :name,:remote_image_url, :category_title_list_memberships_attributes
   has_many :title_category_memberships
   has_many :titles,:through => :title_category_memberships
 

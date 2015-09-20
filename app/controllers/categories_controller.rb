@@ -97,4 +97,8 @@ class CategoriesController < ApplicationController
   end
 
 
+  def category_params
+    params.require( :description, :image, :name,:remote_image_url, :category_title_list_memberships_attributes)
+    params.permit( :description, :image, :name,:remote_image_url, :category_title_list_memberships_attributes)
+  end
 end

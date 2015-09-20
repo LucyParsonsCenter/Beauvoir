@@ -1,5 +1,4 @@
 class Title < ActiveRecord::Base
-  attr_accessible :title,:contributions_attributes,:authors_attributes,:editions_attributes,:description,:introduction, :title_list_memberships_attributes,:title_category_memberships_attributes
 
   searchable do
     text :title,:introduction,:description

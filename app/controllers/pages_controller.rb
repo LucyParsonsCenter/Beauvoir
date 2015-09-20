@@ -101,4 +101,8 @@ class PagesController < ApplicationController
     params[:page].delete :parent
   end
 
+  def page_params
+    params.require( :body, :introduction, :slug, :title, :parent_id, :images_attributes,:is_hero,:layout,:published,:is_image_grid)
+    params.permit( :body, :introduction, :slug, :title, :parent_id, :images_attributes,:is_hero,:layout,:published,:is_image_grid)
+  end
 end
