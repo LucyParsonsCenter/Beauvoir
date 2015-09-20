@@ -14,7 +14,6 @@ class PurchaseOrder < ActiveRecord::Base
   def self.tags
     ['Normal','Frontlist','Course books','Event order','Tabling order','Special order','Used books','Remainders']
   end
-    
 
   def estimated_total
     purchase_order_line_items.inject(Money.new(0)) {|sum,li| sum+li.ext_price   }
@@ -24,15 +23,12 @@ class PurchaseOrder < ActiveRecord::Base
     purchase_order_line_items.inject(Money.new(0)) {|sum,li| sum+li.ext_price   }.to_s
   end
 
- def number_of_copies
-    purchase_order_line_items.inject(0) {|sum,li| sum+li.quantity}
- end
- 
-
+  def number_of_copies
+     purchase_order_line_items.inject(0) {|sum,li| sum+li.quantity}
+  end
 
   def as_json(options = {})
     options[:methods] = :estimated_total_string
     super(options)
   end
-
 end
