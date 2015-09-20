@@ -84,14 +84,6 @@ CreatePostTitleLink.blueprint do
   # Attributes here
 end
 
-PostTitleLink.blueprint do
-  # Attributes here
-end
-
-PostTitleListLink.blueprint do
-  # Attributes here
-end
-
 Category.blueprint do
   # Attributes here
 end
@@ -116,27 +108,11 @@ CategoryTitleListMembership.blueprint do
   # Attributes here
 end
 
-EventLocation.blueprint do
-  # Attributes here
-end
-
-Event.blueprint do
-  # Attributes here
-end
-
 ShoppingCart.blueprint do
   # Attributes here
 end
 
 ShoppingCartLineItem.blueprint do
-  # Attributes here
-end
-
-EventStaffer.blueprint do
-  # Attributes here
-end
-
-EventShift.blueprint do
   # Attributes here
 end
 
