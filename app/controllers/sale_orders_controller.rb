@@ -43,6 +43,8 @@ class SaleOrdersController < ApplicationController
   def create
     @sale_order = SaleOrder.new(sale_order_params)
 
+
+
     respond_to do |format|
       if @sale_order.save
         format.html { redirect_to @sale_order, notice: 'Sale order was successfully created.' }
