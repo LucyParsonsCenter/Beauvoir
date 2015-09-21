@@ -6,8 +6,9 @@ VAGRANTFILE_API_VERSION = "2"
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box = "ubuntu/trusty32"
   config.vm.network "forwarded_port", guest: 3000, host: 3000
-
- 
+  config.vm.network :private_network, ip: '192.168.50.50'
+  config.vm.synced_folder '.', '/vagrant', nfs: true
+   
   config.vm.provider "virtualbox" do |vb|
     vb.gui = false
     vb.customize ["modifyvm", :id, "--memory", "1024"]
@@ -18,7 +19,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.provision :shell, privileged: true, inline: <<-SCRIPT
     apt-get -y update
     apt-get -y upgrade
-    apt-get -y install git build-essential cmake ruby-rmagick ruby-build jvm-7-avian-jre rmagic imagemagick libmagickwand-dev libjetty-extra-java libtomcat7-java silversearcher-ag nodejs-legacy npm pry
+    apt-get -y install ruby-railties git rbenv bundler build-essential cmake ruby-rmagick ruby-build jvm-7-avian-jre rmagic imagemagick libmagickwand-dev libjetty-extra-java libtomcat7-java silversearcher-ag nodejs-legacy npm
   SCRIPT
 
   # configure database
