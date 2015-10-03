@@ -1,7 +1,8 @@
 #Beauvoir
 
 Beauvoir is a point of sale system written in Rails. It was built mainly
-for use at the Lucy Parsons Center in Boston, MA. 
+for use at the Lucy Parsons Center in Boston, MA and, as such, is mainly
+designed to accomodate book sales, with provisions for a library as well.
 
 Beauvoir is a fork of [Borges](https://github.com/johm/borges) (get it?)
 by John Duda, with a lot of modification.
