@@ -160,6 +160,7 @@ Borges::Application.routes.draw do
 
   #static pages
   get '/', :to => "static_page#home"
+  get '/home', :to => "static_page#home"
   get '/help', :to => "static_page#help"
   get '/about', :to => "static_page#about"
 

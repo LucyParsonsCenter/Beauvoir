@@ -1,9 +1,7 @@
 #= require jquery
 #= require jquery_ujs
 #= require jquery-ui
-#= require turbolinks
 #= require bootstrap-sprockets
-#= require bootstrap
 #= require jquery.fittext.js
 #= require autocomplete-rails
 #= require bootstrap-switch
@@ -16,4 +14,5 @@
 #= require mediaelement_rails
 #= require highcharts/highcharts-more                                                         
 #= require highcharts/highstock
+#= require turbolinks
 #= require_tree .

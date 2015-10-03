@@ -1,30 +1,25 @@
-</div>
-<div class="row">
-  <div class="span8">
+.row
+  .span8
 
-<h1>Listing sale_orders</h1>
+%h1 Listing sale_orders
 
-<table class="table">
-  <tr>
-    <th>Number</th>
-    <th>Source</th>
-    <th>Total</th>
-    <th>Posted</th>
-  </tr>
+.table
+  %tr
+    %th Number
+    %th Source
+    %th Total
+    %th Posted
 
-<% @sale_orders.each do |sale_order| %>
-  <tr>
-    <td><%= link_to sale_order.id, sale_order %></td>
-    <td><%= "POS" if sale_order.from_pos  %><%= "WEB" if sale_order.from_web %></td>
-    <td><%= sale_order.total %></td>
-    <td><%= sale_order.posted? ? "#{sale_order.posted_when.to_formatted_s(:full_datetime)}" : "No"  %></td>
-  </tr>
-<% end %>
-</table>
+-@sale_orders.each do |sale_order|
+  %tr
+    %td= link_to sale_order.id, sale_order 
+    %td
+      - if sale_order.from_pos
+        "POS"
+      - elsif sale_order.from_web
+        "WEB"
+    %td= sale_order.total 
+    %td= sale_order.posted? ? "#{sale_order.posted_when.to_formatted_s(:full_datetime)}" : "No" 
 
-</div>
-<div class="span4">
-
-  <%= link_to 'New Sale order', new_sale_order_path %>
-</div>
-</div>
+.span4
+  = link_to 'New Sale order', new_sale_order_path

@@ -16,10 +16,13 @@ group :development, :test do
 end
 
 group :assets do
-  gem 'sass-rails'
+  gem "bootstrap-sass", "~> 3.3.5"
+  gem 'sass-rails', '>= 3.2'
   gem 'coffee-rails'
   gem 'uglifier', '>= 1.0.3'
   gem "therubyracer", ">= 0.11.3", :platform => :ruby, :require => "v8"
+  gem 'haml'
+  gem 'haml-rails'
 end
 
 group :test do
@@ -29,11 +32,11 @@ group :test do
   gem "machinist", ">= 2.0"
 end
 
+gem 'turbolinks'
 gem 'friendly_id', "4.0.9"
 gem 'jquery-rails'
 gem "thin", ">= 1.5.0"
 
-gem "bootstrap-sass", "~> 3.2.0"
 gem "devise", ">= 2.2.3"
 gem "rolify", ">= 3.2.0"
 
@@ -51,7 +54,6 @@ gem 'money-rails'
 gem 'rmagick'
 gem 'best_in_place'
 gem "default_value_for"
-gem 'haml'
 gem 'formtastic', '~> 3.1.3'
 # gem 'activeadmin'
 
