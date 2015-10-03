@@ -1,6 +1,6 @@
 #Development environment
 
-There's a Vagrantfile included with Borges. If you want to develop with
+There's a Vagrantfile included with Beauvoir. If you want to develop with
 the vm (it's super nice!) you'll need to have a couple things installed.
 
 If you're running an apt-based Linux distro (like Debian or Ubuntu) do
@@ -50,7 +50,7 @@ on).
 
 ##App details
 
-Borges targets Ruby 2.1.0 - the VM installs this automatically.
+Beauvoir targets Ruby 2.1.0 - the VM installs this automatically.
 
 In order for the app to work the text search engine has to be running. If
 you're in the app directory the command to start it is:
