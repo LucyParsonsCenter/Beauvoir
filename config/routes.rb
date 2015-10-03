@@ -143,7 +143,6 @@ Borges::Application.routes.draw do
 
   get '/checkout', :to => 'sale_order#new'
   get '/sales_history', :to => 'sale_order#index'
-  get '/help', :to => 'home#help'
   get '/dashboard/search', :to => 'dashboard#search'
   get '/dashboard/:action', :to => 'dashboard'
   get '/dashboard/', :to => 'dashboard#index'
@@ -158,9 +157,11 @@ Borges::Application.routes.draw do
   get '/daily/', :to => 'dashboard#daily', :as => "daily"
   get '/manage_calendar/', :to => 'dashboard#manage_calendar'
   get '/books/', :to => 'home#books'
-  get '/cart', :to => "shopping_carts#current"
-  put '/update_cart', :to => "shopping_carts#update_current"
+
+  #static pages
   get '/', :to => "static_page#home"
+  get '/help', :to => "static_page#help"
+  get '/about', :to => "static_page#about"
 
   devise_for :users
   resources :users
