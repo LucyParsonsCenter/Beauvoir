@@ -3,7 +3,7 @@ class SaleOrder < ActiveRecord::Base
   belongs_to :user
   has_many :sale_order_line_items
 
-  default_scope  includes(:sale_order_line_items)
+  # default_scope  includes(:sale_order_line_items)
 
   def cost
     sale_order_line_items.inject(Money.new(0)) {|sum,soli| sum+soli.copy.cost }

@@ -19,7 +19,7 @@ Borges::Application.routes.draw do
 
   resources :sale_order_line_items
  
-  resources :sale_orders do
+  resources :sale_order do
     member do
       post :post
     end
