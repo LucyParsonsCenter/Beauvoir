@@ -21,15 +21,15 @@
         });
       = mylinkbutton("<i class='icon-plus'></i> Add","#",{:id=>"add_sale_order_line_item"}) 
   
-  -# %table.table#sale_order_line_items
-  -#   %tr
-  -#     %th Item
-  -#     %th ISBN
-  -#     %th List price
-  -#     %th Sale price
-  -#     %th= "Categorized?" if @sale_order.posted? 
-  -#   -@sale_order.sale_order_line_items.each do |li| 
-  -#     = render li
+  %table.table#sale_order_line_items
+    %tr
+      %th Item
+      %th ISBN
+      %th List price
+      %th Sale price
+      %th= "Categorized?" if @sale_order.posted? 
+    -@sale_order.sale_order_line_items.each do |li| 
+      = render li
 
   .span2
     quicklinks to last 3 sold books
