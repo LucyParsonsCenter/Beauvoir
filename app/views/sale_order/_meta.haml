@@ -1,44 +1,35 @@
-      <table class="table">
-	<tr>
-	  <th>Subtotal</th>
-	  <td id="sale_order_subtotal"><%= sale_order.subtotal %></td>
-	</tr>
-	<tr>
-	  <th>Discount</th>
-	  <td><%= best_in_place_if (! sale_order.posted?),sale_order, :discount_percent, :type => :input %>%</td>
-	</tr>
-	<tr>
-	  <th>Tax</th>
-	  <td ><%= sale_order.tax_amount %></td>
-	</tr>
-	<tr>
-	  <th>Total</th>
-	  <td id="sale_order_total"><%= sale_order.total %></td>
-	</tr>
+%table.table
+  %tr
+    %th Subtotal
+    %td#sale_order_subtotal
+      = sale_order.subtotal
+  %tr
+    %th Discount
+    %td= best_in_place_if (! sale_order.posted?),sale_order, :discount_percent, :type => :input
+  %tr
+    %th Tax
+    %td= sale_order.tax_amount
+  %tr
+    %th Total
+    %td#sale_order_total
+      = sale_order.total 
+    %th Source
+    %td
+      - if sale_order.from_pos? 
+        "POS"
+      -elsif sale_order.from_web?
+        "WEB"
+  %tr
+    %th Customer
+    %td= sale_order.customer
+  %tr
+    %th Cashier
+    %td= sale_order.user.name rescue ""
 
-	<th>Source</th>
-	  <td><%= if sale_order.from_pos? 
-		  "POS"
-		  elsif sale_order.from_web?
-		  "WEB"
-		  end
-		  %> 
-	  </td>
-	</tr>
-	<tr>
-	  <th>Customer</th>
-	  <td><%= sale_order.customer %></td>
-	</tr>
-<tr>
-  <th>Cashier</th>
-  <td><%= sale_order.user.name rescue ""%></td>
-</tr>
 
-      </table>
-<script>
+:javascript
   $('.best_in_place').bind("ajax:success", function (evt, data,status,xhr){
   $('#sale_order_meta').html($.parseJSON(data).new_meta);
   $('#sale_order_meta').effect('highlight'); 
   return false;
   });
-</script>
