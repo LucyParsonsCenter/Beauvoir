@@ -20,8 +20,8 @@
  *= require mediaelement_rails/mejs-skins
  *= require jquery.datetimepicker	
 */
-
-
+@import "bootstrap-sprockets"
+@import "bootstrap"
 
 .content {
   background-color: #eee;
