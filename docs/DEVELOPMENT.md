@@ -41,7 +41,7 @@ process again if you do this).
 ##VM details
 
 The VM runs 32 bit ubuntu 14.04. The Vagrantfile should specify all the
-packages that are needed to run Borges.
+packages that are needed to run Beauvoir.
 
 The shared files are in the VM in `/vagrant` - anything that's in the repo
 is shared with the VM. This makes it easy to develop in your local
