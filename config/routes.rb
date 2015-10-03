@@ -160,7 +160,7 @@ Borges::Application.routes.draw do
   get '/books/', :to => 'home#books'
   get '/cart', :to => "shopping_carts#current"
   put '/update_cart', :to => "shopping_carts#update_current"
-  get '/', :to => "home#frontpage"
+  get '/', :to => "static_page#home"
 
   devise_for :users
   resources :users
