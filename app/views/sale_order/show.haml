@@ -1,5 +1,4 @@
-.span8
-  %p#notice notice
+.container
   %h1 
     Sale: 
     = @sale_order.id
@@ -42,5 +41,5 @@
         Posted:
         = @sale_order.post_when
     
-    .sale_order_meta
-      = render :partial=>"meta",:locals=>{:sale_order=>@sale_order} 
+  .sale_order_meta
+    = render :partial=>"meta",:locals=>{:sale_order=>@sale_order} 
