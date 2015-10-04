@@ -15,16 +15,6 @@ group :development, :test do
   gem "rspec-rails", ">= 2.12.2", :group => [:development, :test]
 end
 
-group :assets do
-  gem "bootstrap-sass", "~> 3.3.5"
-  gem 'sass-rails', '>= 3.2'
-  gem 'coffee-rails'
-  gem 'uglifier', '>= 1.0.3'
-  gem "therubyracer", ">= 0.11.3", :platform => :ruby, :require => "v8"
-  gem 'haml'
-  gem 'haml-rails'
-end
-
 group :test do
 #  gem "capybara", ">= 2.0.3"
   gem "database_cleaner", ">= 1.0.0.RC1"
@@ -32,19 +22,21 @@ group :test do
   gem "machinist", ">= 2.0"
 end
 
+gem "bootstrap-sass", "~> 3.3.5"
+gem 'sass-rails', '>= 3.2'
+gem 'coffee-rails'
+gem 'uglifier', '>= 1.0.3'
+gem "therubyracer", ">= 0.11.3", :platform => :ruby, :require => "v8"
+gem 'haml'
+gem 'haml-rails'
 gem 'turbolinks'
 gem 'friendly_id', "4.0.9"
 gem 'jquery-rails'
 gem "thin", ">= 1.5.0"
-
 gem "devise", ">= 2.2.3"
 gem "rolify", ">= 3.2.0"
-
 gem "figaro", ">= 0.6.3"
-
-
 gem "libv8", ">= 3.11.8"
-
 gem 'rails3-jquery-autocomplete'
 gem 'jquery-ui-rails'
 gem "nested_form"
@@ -56,7 +48,6 @@ gem 'best_in_place'
 gem "default_value_for"
 gem 'formtastic', '~> 3.1.3'
 # gem 'activeadmin'
-
 gem 'ckeditor', "= 4.0.2"
 gem "mini_magick"
 gem 'kaminari'
