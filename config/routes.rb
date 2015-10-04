@@ -157,7 +157,7 @@ Borges::Application.routes.draw do
   get '/daily/', :to => 'dashboard#daily', :as => "daily"
   get '/manage_calendar/', :to => 'dashboard#manage_calendar'
   get '/books/', :to => 'home#books'
-  get '/library/', :to => 'library_book'
+  get '/library/', :to => 'library_book#index'
 
   #static pages
   get '/', :to => "static_page#home"
