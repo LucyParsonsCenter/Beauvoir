@@ -8,7 +8,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.network "forwarded_port", guest: 3000, host: 3000
   config.vm.network :private_network, ip: '192.168.50.50'
   config.vm.synced_folder '.', '/vagrant', nfs: true, nfs_export: true
-   
+
   config.vm.provider "virtualbox" do |vb|
     vb.gui = false
     vb.customize ["modifyvm", :id, "--memory", "1024"]
@@ -34,7 +34,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     echo "create database borgesdev" | mysql -u root --password=abc123
     echo "create database borgestest" | mysql -u root --password=abc123
     echo "create database borgesprod" | mysql -u root --password=abc123
-    
+
     echo "grant all privileges on borgesdev.* to 'borges'@'%' identified by 'password'" | mysql -u root --password='abc123'
     echo "grant all privileges on borgestest.* to 'borges'@'%' identified by 'password'" | mysql -u root --password='abc123'
     echo "grant all privileges on borgesprod.* to 'borges'@'%' identified by 'password'" | mysql -u root --password='abc123'
@@ -44,7 +44,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # as regular user (vagrant)
   config.vm.provision :shell, privileged: false, inline: <<-SCRIPT
     echo "\n\nconfiguring ruby/rails environment..."
-    
+
     git clone https://github.com/aliceriot/borges-utils ~/borges-utils
 
     gpg --keyserver pgp.mit.edu --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
@@ -78,7 +78,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     # bundle exec rake db:create
     bundle exec rake db:schema:load
     bundle exec rake db:migrate
-    
+
     rails generate sunspot_rails:install
     rake sunspot:solr:start
 

@@ -2,7 +2,7 @@
 namespace :infoshopkeeper do
   desc "Import from infoshopkeeper"
   task :import => :environment do
-    
+
     isk_db="isk"
     isk_db_user="isk"
     isk_db_password="isk"
@@ -10,16 +10,16 @@ namespace :infoshopkeeper do
     only_do_books=true
 
     puts "Connecting to old database...."
-    DB = Sequel.connect(:adapter => 'mysql2', :user => isk_db_user, :host => 'localhost', :database => isk_db,:password=>isk_db_password)    
-    puts "Success!"			 
-    
+    DB = Sequel.connect(:adapter => 'mysql2', :user => isk_db_user, :host => 'localhost', :database => isk_db,:password=>isk_db_password)
+    puts "Success!"
+
     titles=DB[:title]
     books=DB[:book]
     authors=DB[:author]
     titletags=DB[:titletag]
     author_title=DB[:author_title]
 
-    #Get the list of titles from isk    
+    #Get the list of titles from isk
     if only_do_books
       titles_to_import=titles.where(:kind_id => 1)
     else
@@ -33,20 +33,21 @@ namespace :infoshopkeeper do
 
       #each title becomes a borges title
       new_title=Title.new(:title => t[:booktitle] )
-      
+
       unless t[:publisher].blank?
+        byebug
         new_publisher=Publisher.find_or_create_by_name(t[:publisher])
       end
 
       old_isbn=Lisbn.new(t[:isbn])
-      
+
       if old_isbn.valid?
         new_isbn10=old_isbn.isbn10
         new_isbn13=old_isbn.isbn13
-        
+
         #We'll try openlibrary.org for a cover image
         #new_cover_url="http://covers.openlibrary.org/b/isbn/#{new_isbn13}-L.jpg"
-        
+
         #HIT GOOGLE API FOR DATE OF PUBLICATION
         gbooks = GoogleBooks.search('isbn:'+new_isbn13) # yields a collection of one result
         gbook = gbooks.first
