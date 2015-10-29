@@ -81,4 +81,10 @@ class CustomersController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  protected
+
+  def customer_params
+    params.permit(:email, :name, :notes, :phone)
+  end
 end
