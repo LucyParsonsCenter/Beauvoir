@@ -81,7 +81,7 @@ class InventoryCopyConfirmationsController < ApplicationController
     @inventory_copy_confirmation = InventoryCopyConfirmation.find(params[:id])
     @inventory_copy_confirmation_id =    @inventory_copy_confirmation.id
     @inventory=@inventory_copy_confirmation.inventory
-    
+
     # mark the copy as lost
 
     @inventory_copy_confirmation.copy.mark_lost()
@@ -100,7 +100,7 @@ class InventoryCopyConfirmationsController < ApplicationController
     @inventory_copy_confirmation = InventoryCopyConfirmation.find(params[:id])
     @inventory_copy_confirmation_id = @inventory_copy_confirmation.id
     @inventory=@inventory_copy_confirmation.inventory
-    
+
 
     @inventory_copy_confirmation.copy.mark_probablyreturned()
 
@@ -115,4 +115,9 @@ class InventoryCopyConfirmationsController < ApplicationController
   end
 
 
+  protected
+
+  def inventory_copy_confirmation_params
+    params.permit(:status, :inventory_id, :copy_id)
+  end
 end

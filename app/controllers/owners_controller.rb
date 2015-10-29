@@ -85,4 +85,10 @@ class OwnersController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  protected
+
+  def owner_params
+    params.permit(:name, :notes)
+  end
 end

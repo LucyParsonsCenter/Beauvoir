@@ -45,7 +45,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.provision :shell, privileged: false, inline: <<-SCRIPT
     echo "\n\nconfiguring ruby/rails environment..."
 
-    git clone https://github.com/aliceriot/borges-utils ~/borges-utils
+    git clone https://github.com/aliceriot/borges-utils ~/beauvoir-utils
 
     gpg --keyserver pgp.mit.edu --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
     curl -sSL https://get.rvm.io | bash -s stable

@@ -4,8 +4,8 @@ class Distributor < ActiveRecord::Base
 #  has_many :editions, :through => :copies
   has_many :invoice_line_items, :through => :invoices
   has_many :copies, :through => :invoice_line_items
-  has_many :editions, :through => :copies, :uniq=>true
-  has_many :titles, :through => :editions, :uniq=>true
+  has_many :editions, :through => :copies
+  has_many :titles, :through => :editions
   has_many :purchase_orders
   has_many :invoices
   has_many :return_orders
