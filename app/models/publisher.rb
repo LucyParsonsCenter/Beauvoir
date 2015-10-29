@@ -1,8 +1,8 @@
 class Publisher < ActiveRecord::Base
   has_many :editions
-  has_many :titles, :through => :editions  
+  has_many :titles, :through => :editions
 
-  def to_s 
+  def to_s
     name_and_id
   end
 
@@ -13,10 +13,10 @@ class Publisher < ActiveRecord::Base
   def name_and_editions
     "#{name} (#{editions.count} editions)"
   end
-  
+
 
   def merge_stuff_from_publisher(unneeded_publisher_id)
-    
+
     begin
       unneeded_publisher=Publisher.find(unneeded_publisher_id)
     rescue
@@ -26,7 +26,7 @@ class Publisher < ActiveRecord::Base
     if self.id==unneeded_publisher_id.to_i || unneeded_publisher.nil?
       return false
     end
-          
+
     unneeded_publisher.editions.each do |e|
       e.publisher = self
       e.save!
