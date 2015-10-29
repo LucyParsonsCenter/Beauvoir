@@ -32,11 +32,10 @@ namespace :infoshopkeeper do
       puts "Processing title: #{t[:booktitle]}"
 
       #each title becomes a borges title
-      new_title=Title.new(:title => t[:booktitle] )
+      new_title = Title.new(:title => t[:booktitle] )
 
       unless t[:publisher].blank?
-        byebug
-        new_publisher=Publisher.find_or_create_by_name(t[:publisher])
+        new_publisher=Publisher.find_or_create_by(name: t[:publisher])
       end
 
       old_isbn=Lisbn.new(t[:isbn])
@@ -75,12 +74,12 @@ namespace :infoshopkeeper do
                             :inventoried_when => book[:inventoried_when],
                             :deinventoried_when => book[:sold_when],
                             :status => book[:status],
-                            :owner => (Owner.find_or_create_by_name(book[:owner]) unless book[:owner].blank?),
+                            :owner => (Owner.find_or_create_by(name: book[:owner]) unless book[:owner].blank?),
                             :notes => book[:notes],
                             :is_used => (book[:distributor] == "used" ? true : false),
                             )
 
-        distrib = Distributor.find_or_create_by_name(book[:distributor]) unless book[:distributor].blank?
+        distrib = Distributor.find_or_create_by(name: book[:distributor]) unless book[:distributor].blank?
         unless new_copy.valid?
           puts new_copy.errors.messages
         end
@@ -96,12 +95,12 @@ namespace :infoshopkeeper do
       authors_for_title=author_titles.collect {|a_t| authors.where(:id => a_t[:author_id]).first}
       
       authors_for_title.each do |a|
-        new_title.authors << Author.find_or_create_by_full_name(a[:author_name])
+        new_title.authors << Author.find_or_create_by(full_name: a[:author_name])
       end
 
       tags=titletags.where(:title_id => t[:id],:tagkey => "section")
       tags.each do |tag|
-        new_title.categories << Category.find_or_create_by_name(tag[:tagvalue])
+        new_title.categories << Category.find_or_create_by(name: tag[:tagvalue])
       end
       
       new_title.save!
