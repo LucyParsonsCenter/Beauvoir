@@ -25,13 +25,13 @@ class Edition < ActiveRecord::Base
 
   default_value_for :format, "Paperback"
 
-  searchable do
-    text :isbn10,:isbn13
+#   searchable do
+#     text :isbn10,:isbn13
 
-    text :title do
-      title.title rescue ""
-    end
-  end
+#     text :title do
+#       title.title rescue ""
+#     end
+#   end
 
   def has_copies_in_stock?
     copies.where("status"=>"STOCK").length > 0

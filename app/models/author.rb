@@ -3,21 +3,21 @@ class Author < ActiveRecord::Base
   has_many :titles, :through => :contributions
 
   before_save :set_first_last_and_full_name
-  
-  searchable do
-    text :full_name
 
-    integer :titles do
-      titles.length
-    end
+#   searchable do
+#     text :full_name
 
-    text :bio
-  end
+#     integer :titles do
+#       titles.length
+#     end
 
-  def to_s 
+#     text :bio
+#   end
+
+  def to_s
     full_name
   end
-  
+
   def set_first_last_and_full_name 
     if (full_name && (first_name.blank?  && last_name.blank?))
         split_name=full_name.rpartition(" ")
@@ -27,7 +27,7 @@ class Author < ActiveRecord::Base
         self.full_name = "#{first_name} #{last_name}"
       end
   end
-  
+
   def set_full_name
 
   end

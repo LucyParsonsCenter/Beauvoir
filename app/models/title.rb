@@ -1,35 +1,35 @@
 class Title < ActiveRecord::Base
-  searchable do
-    text :title,:introduction,:description
+  # searchable do
+  #   text :title,:introduction,:description
 
-    text :authors do
-      authors.map { |a| a.full_name }
-    end  
+  #   text :authors do
+  #     authors.map { |a| a.full_name }
+  #   end  
 
-    integer :category_count do 
-      categories.length
-    end
+  #   integer :category_count do 
+  #     categories.length
+  #   end
 
-    text :publisher do
-      editions.map { |e| e.publisher }
-    end  
+  #   text :publisher do
+  #     editions.map { |e| e.publisher }
+  #   end  
 
-    text :distributor do
-      copies.map { |c| c.invoice_line_item.invoice.distributor unless c.invoice_line_item.nil? }
-    end  
+  #   text :distributor do
+  #     copies.map { |c| c.invoice_line_item.invoice.distributor unless c.invoice_line_item.nil? }
+  #   end  
     
-    text :isbn do
-      editions.map {|e| "#{e.isbn13} #{e.isbn10}"}
-    end
+  #   text :isbn do
+  #     editions.map {|e| "#{e.isbn13} #{e.isbn10}"}
+  #   end
 
-    integer :copies_sold do
-      copies.where(status: "SOLD").length
-    end
+  #   integer :copies_sold do
+  #     copies.where(status: "SOLD").length
+  #   end
 
-    integer :copies_in_stock do  
-      copies.where(status: "STOCK").length
-    end
-  end
+  #   integer :copies_in_stock do  
+  #     copies.where(status: "STOCK").length
+  #   end
+  # end
 
   has_many :contributions
   has_many :authors, :through => :contributions
