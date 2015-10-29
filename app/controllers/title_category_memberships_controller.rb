@@ -84,4 +84,10 @@ class TitleCategoryMembershipsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  protected
+
+  def category_membership_params
+    params.permit(:title_id, :category_id)
+  end
 end

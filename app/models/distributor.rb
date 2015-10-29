@@ -1,5 +1,4 @@
 class Distributor < ActiveRecord::Base
-  attr_accessible :name, :notes, :our_account_number
 
 #  has_many :copies
 #  has_many :editions, :through => :copies
@@ -11,7 +10,7 @@ class Distributor < ActiveRecord::Base
   has_many :invoices
   has_many :return_orders
 
-  def to_s 
+  def to_s
     name_and_id
   end
 
@@ -22,7 +21,7 @@ class Distributor < ActiveRecord::Base
 
 
   def merge_stuff_from_distributor(unneeded_distributor_id)
-    
+
     begin
       unneeded_distributor=Distributor.find(unneeded_distributor_id)
     rescue
@@ -32,14 +31,14 @@ class Distributor < ActiveRecord::Base
     if self.id==unneeded_distributor_id.to_i || unneeded_distributor.nil?
       return false
     end
-    
+
     [:return_orders,:purchase_orders,:invoices].each do |m|
       unneeded_distributor.send(m).each do |e|
         e.distributor = self
         e.save!
       end
     end
-    
+
     if self.our_account_number.blank? && ! unneeded_distributor.our_account_number.blank?
       self.our_account_number=unneeded_distributor.our_account_number
     end

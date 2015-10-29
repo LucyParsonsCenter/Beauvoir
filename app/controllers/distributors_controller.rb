@@ -107,18 +107,21 @@ class DistributorsController < ApplicationController
     respond_to do |format|
       format.html { render action: "chart" }
     end
-
   end
 
 
   private
+
+  def distributor_params
+    params.permit(:name, :notes, :our_account_numbeR)
+  end
+
   def sort_direction
     %w[asc desc].include?(params[:direction]) ?  params[:direction] : "desc"
   end
+
   def sort_column
     %w[created_at number id].include?(params[:sort]) ? params[:sort] : "created_at"
   end
-
-  
 
 end
