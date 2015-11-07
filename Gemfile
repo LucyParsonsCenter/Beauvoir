@@ -17,7 +17,7 @@ group :development, :test do
 end
 
 group :test do
-#  gem "capybara", ">= 2.0.3"
+  gem "capybara", ">= 2.0.3"
   gem "database_cleaner", ">= 1.0.0.RC1"
   gem "email_spec", ">= 1.4.0"
   gem "machinist", ">= 2.0"
@@ -48,7 +48,6 @@ gem 'rmagick'
 gem 'best_in_place'
 gem "default_value_for"
 gem 'formtastic', '~> 3.1.3'
-# gem 'activeadmin'
 gem 'ckeditor', "= 4.0.2"
 gem "mini_magick"
 gem 'kaminari'
