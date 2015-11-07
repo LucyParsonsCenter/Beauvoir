@@ -10,8 +10,9 @@ by John Duda, with a lot of modification.
 ##Installing and running it
 
 If you want to do some dev work, check out [the
-guide](docs/DEVELOPMENT.md). If you're interested in deploying the app
-then the Vagrantfile here is a good guide. There's some handy stuff in the
+guide](docs/DEVELOPMENT.md) and the ever-growing [TODO](docs/TODO.md). If
+you're interested in deploying the app then the Vagrantfile here is a good
+guide. There's some handy stuff in the
 [beauvoir-utils](https://github.com/aliceriot/beauvoir-utils) repo as
 well.
 
