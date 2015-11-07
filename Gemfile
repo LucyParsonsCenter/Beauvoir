@@ -7,6 +7,7 @@ group :development do
   gem "better_errors", ">= 0.7.2"
   gem "binding_of_caller", ">= 0.7.1", :platforms => [:mri_19, :rbx]
   gem "lol_dba"
+  gem "pry-rails"
 end
 
 group :development, :test do
