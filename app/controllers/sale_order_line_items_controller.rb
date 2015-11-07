@@ -1,7 +1,5 @@
 class SaleOrderLineItemsController < ApplicationController
-  before_filter :authenticate_user! 
-  load_and_authorize_resource
-  
+  before_filter :authenticate_user!
 
   # GET /sale_order_line_items
   # GET /sale_order_line_items.json

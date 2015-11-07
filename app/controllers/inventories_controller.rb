@@ -1,6 +1,5 @@
 class InventoriesController < ApplicationController
   before_filter :authenticate_user!
-  load_and_authorize_resource
   helper_method :sort_column, :sort_direction
 
   # GET /inventories

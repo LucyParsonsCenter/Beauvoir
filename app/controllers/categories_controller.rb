@@ -1,8 +1,6 @@
 class CategoriesController < ApplicationController
   before_filter :hack_out_params, :only=>[:create,:update]
   before_filter :authenticate_user!, :except=>[:show,:index] 
-  
-  load_and_authorize_resource
 
   # GET /categories
   # GET /categories.json

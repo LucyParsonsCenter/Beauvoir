@@ -1,7 +1,5 @@
 class CategoryTitleListMembershipsController < ApplicationController
   before_filter :authenticate_user! 
-  load_and_authorize_resource
-
 
   # GET /category_title_list_memberships
   # GET /category_title_list_memberships.json

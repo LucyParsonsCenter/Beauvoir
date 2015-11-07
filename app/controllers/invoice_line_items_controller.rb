@@ -1,6 +1,5 @@
 class InvoiceLineItemsController < ApplicationController
   before_filter :authenticate_user! 
-  load_and_authorize_resource
 
   # GET /invoice_line_items
   # GET /invoice_line_items.json

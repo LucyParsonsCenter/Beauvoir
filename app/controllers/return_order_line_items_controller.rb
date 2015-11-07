@@ -1,7 +1,5 @@
 class ReturnOrderLineItemsController < ApplicationController
-  before_filter :authenticate_user! 
-  load_and_authorize_resource
-  
+  before_filter :authenticate_user!
 
   # GET /return_order_line_items
   # GET /return_order_line_items.json

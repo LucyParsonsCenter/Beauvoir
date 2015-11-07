@@ -1,6 +1,5 @@
 class TitleListMembershipsController < ApplicationController
-  before_filter :authenticate_user! 
-  load_and_authorize_resource
+  before_filter :authenticate_user!
 
   # GET /title_list_memberships
   # GET /title_list_memberships.json

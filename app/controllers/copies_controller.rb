@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 class CopiesController < ApplicationController
-  before_filter :authenticate_user! 
-  load_and_authorize_resource
+  before_filter :authenticate_user!
   before_filter :hack_out_params , :only=>[:create,:update]
 
   # GET /copies

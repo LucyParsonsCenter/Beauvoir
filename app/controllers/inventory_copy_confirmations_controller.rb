@@ -1,7 +1,5 @@
 class InventoryCopyConfirmationsController < ApplicationController
   before_filter :authenticate_user!
-  load_and_authorize_resource
-
 
   # GET /inventory_copy_confirmations
   # GET /inventory_copy_confirmations.json

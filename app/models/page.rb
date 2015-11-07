@@ -4,7 +4,7 @@ class Page < ActiveRecord::Base
   has_many :images, :as => :imagey
   validates :layout,:presence => true
   validates :layout,:inclusion => {:in => PagesController.helpers.layouts}
-  
+
   accepts_nested_attributes_for :images, :allow_destroy => true
 
   extend FriendlyId

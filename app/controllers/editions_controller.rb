@@ -1,9 +1,7 @@
 class EditionsController < ApplicationController
   before_filter :authenticate_user! , :except=>[:show,:byisbn]
-  load_and_authorize_resource
   autocomplete :title,:title,:full=>true,:display_value=>:title_and_id,:limit => 20
   before_filter :hack_out_params , :only=>[:create,:update]
-  
 
   # GET /editions
   # GET /editions.json

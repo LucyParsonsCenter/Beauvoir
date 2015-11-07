@@ -1,8 +1,6 @@
 class ReturnOrdersController < ApplicationController
-  before_filter :authenticate_user! 
-  before_filter :hack_out_params , :only=>[:create,:update]  
-  load_and_authorize_resource
-
+  before_filter :authenticate_user!
+  before_filter :hack_out_params , :only=>[:create,:update]
 
   # GET /return_orders
   # GET /return_orders.json
@@ -19,7 +17,7 @@ class ReturnOrdersController < ApplicationController
   # GET /return_orders/1.json
   def show
     @return_order = ReturnOrder.find(params[:id])
-    
+
 
     respond_to do |format|
       format.html # show.html.erb

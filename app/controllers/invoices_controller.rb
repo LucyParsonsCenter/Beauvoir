@@ -1,8 +1,6 @@
 class InvoicesController < ApplicationController
-  before_filter :authenticate_user! 
+  before_filter :authenticate_user!
   before_filter :hack_out_params , :only=>[:create,:update]
-
-  load_and_authorize_resource
   helper_method :sort_column, :sort_direction
 
   # GET /invoices

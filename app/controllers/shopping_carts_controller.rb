@@ -1,6 +1,5 @@
 class ShoppingCartsController < ApplicationController
   before_filter :authenticate_user!, :except=>[:current,:update_current]
-  load_and_authorize_resource
 
   # GET /shopping_carts
   # GET /shopping_carts.json

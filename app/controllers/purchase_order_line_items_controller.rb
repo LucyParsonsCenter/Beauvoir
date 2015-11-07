@@ -1,10 +1,7 @@
 class PurchaseOrderLineItemsController < ApplicationController
   before_filter :hack_out_params , :only=>[:create,:update]
 
-  before_filter :authenticate_user! 
-  load_and_authorize_resource 
-
-  
+  before_filter :authenticate_user!
 
   # GET /purchase_order_line_items
   # GET /purchase_order_line_items.json
