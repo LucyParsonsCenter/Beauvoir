@@ -7,7 +7,7 @@ This is, well, a to-do list, along with some notes and so on.
 * add library functionality
     * new controller
     * manage via state on Copies
-* use bootstrap for all layout
+* use bootstrap for layout
 * make `rake infoshopkeeper:import` compatible with rails 4.2
 * build new sitewide nav header 
 * redo checkout page
@@ -24,8 +24,11 @@ This is, well, a to-do list, along with some notes and so on.
 * do some design work
 * provisions for importing old sales data from infoshopkeeper
 * inventory management screen (add/remove books, edit metadata, etc)
+* figure out how to deploy everything
+* switch to postgres
 
 ##Completed:
 
 * upgrade to rails 4.2
 * switch from erb to haml
+* set up a dev environment with Vagrant
