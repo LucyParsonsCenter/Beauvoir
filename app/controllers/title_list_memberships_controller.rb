@@ -82,4 +82,10 @@ class TitleListMembershipsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  protected
+
+  def title_list_membership_params
+    params.permit(:notes, :title_id, :title_list_id, :title)
+  end
 end

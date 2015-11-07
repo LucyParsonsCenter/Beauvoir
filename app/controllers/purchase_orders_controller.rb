@@ -157,4 +157,9 @@ class PurchaseOrdersController < ApplicationController
     %w[created_at number distributors.name ordered ordered_when order_by_when].include?(params[:sort]) ? params[:sort] : "created_at"
   end
 
+  protected
+
+  def purchase_order_params
+    params.permit(:notes, :number, :ordered, :ordered_when, :order_by_when, :distributor_id, :owner_id, :tag)
+  end
 end

@@ -96,7 +96,7 @@ class PurchaseOrderLineItemsController < ApplicationController
       format.js { }
     end
   end
-    
+
   def move_to_purchase_order
     @old_purchase_order=@purchase_order_line_item.purchase_order
     @purchase_order_line_item = PurchaseOrderLineItem.find(params[:id])
@@ -113,10 +113,14 @@ class PurchaseOrderLineItemsController < ApplicationController
 
 
   private
-  
+
   def hack_out_params
     params[:purchase_order_line_item].delete :customer
   end
 
+  protected
 
+  def purchase_ordeR_line_item_params
+    params.permit(:quantity, :edition_id, :purchase_order_id, :customer_id, :customer)
+  end
 end

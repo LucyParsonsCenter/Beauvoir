@@ -97,4 +97,10 @@ class InvoiceLineItemsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  protected
+
+  def invoice_line_item_params
+    params.permit( :discount, :is_transfer, :quantity,:invoice_id,:edition_id,:price,:purchase_order_line_item_id)
+  end
 end

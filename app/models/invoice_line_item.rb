@@ -3,8 +3,7 @@ class InvoiceLineItem < ActiveRecord::Base
   belongs_to :invoice
   belongs_to :purchase_order_line_item
   has_many :copies
-  attr_accessible :discount, :is_transfer, :quantity,:invoice_id,:edition_id,:price,:purchase_order_line_item_id
-  
+
   validates :edition,:presence=>true
 
 

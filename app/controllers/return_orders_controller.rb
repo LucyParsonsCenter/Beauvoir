@@ -109,6 +109,10 @@ class ReturnOrdersController < ApplicationController
   def hack_out_params
     params[:return_order].delete :distributor
   end
-  
 
+  protected
+
+  def return_order_params
+    params.permit(:posted, :notes, :distributor_id)
+  end
 end
