@@ -8,8 +8,6 @@ class PurchaseOrder < ActiveRecord::Base
 
   has_many :purchase_order_line_items,dependent: :destroy
 
-  default_scope  includes(:purchase_order_line_items)
-
   def self.tags
     ['Normal','Frontlist','Course books','Event order','Tabling order','Special order','Used books','Remainders']
   end

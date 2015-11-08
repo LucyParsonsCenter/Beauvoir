@@ -3,8 +3,6 @@ class ReturnOrder < ActiveRecord::Base
   has_many :copies, :through => :return_order_line_items
   belongs_to :distributor #where the books came from
 
-  default_scope  includes(:return_order_line_items)
-
   def total
     return_order_line_items.inject(Money.new(0)) {|sum,roli| roli.copy.nil? ? sum : sum+roli.copy.cost }
   end

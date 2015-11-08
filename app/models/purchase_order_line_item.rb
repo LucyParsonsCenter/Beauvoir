@@ -7,15 +7,13 @@ class PurchaseOrderLineItem < ActiveRecord::Base
   validates :edition,:presence=>true
   validates :purchase_order,:presence=>true
 
-  default_scope includes(:title).order('titles.title asc')
-
-  def isbn 
+  def isbn
     if ! edition.nil?
       edition.isbn13 || edition.isbn10 || nil
     end
   end
 
-  def ext_price 
+  def ext_price
     begin
       edition.list_price * quantity
     rescue

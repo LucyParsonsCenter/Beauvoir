@@ -8,8 +8,6 @@ class Invoice < ActiveRecord::Base
   validates :owner,:presence=>true
   validates :distributor,:presence=>true
 
-  default_scope includes(:invoice_line_items => [:edition]) 
-
   def receive
     return if received?
     invoice_line_items.each {|ili| ili.receive}
