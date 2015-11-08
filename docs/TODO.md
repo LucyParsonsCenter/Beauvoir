@@ -26,9 +26,11 @@ This is, well, a to-do list, along with some notes and so on.
 * inventory management screen (add/remove books, edit metadata, etc)
 * figure out how to deploy everything
 * switch to postgres
+* set up CI deployments with semaphore
 
 ##Completed:
 
 * upgrade to rails 4.2
 * switch from erb to haml
 * set up a dev environment with Vagrant
+* set up a semaphore account
