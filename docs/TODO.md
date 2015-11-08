@@ -25,7 +25,7 @@ This is, well, a to-do list, along with some notes and so on.
 * provisions for importing old sales data from infoshopkeeper
 * inventory management screen (add/remove books, edit metadata, etc)
 * figure out how to deploy everything
-* switch to postgres
+* switch to postgres?
 * set up CI deployments with semaphore
 
 ##Completed:
