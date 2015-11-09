@@ -18,7 +18,7 @@ guide. There's some handy stuff in the
 [beauvoir-utils](https://github.com/aliceriot/beauvoir-utils) repo as
 well.
 
-The app runs on Ruby 2.1 and Rails 4.2.
+The app runs on Ruby 2.2.3 and Rails 4.2.
 
 ##License stuff
 
