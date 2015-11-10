@@ -25,6 +25,10 @@ group :test do
   gem "machinist", ">= 2.0"
 end
 
+group :production do
+  gem 'rails_12factor'
+end
+
 gem "bootstrap-sass", "~> 3.3.5"
 gem 'sass-rails', '>= 3.2'
 gem 'coffee-rails'
@@ -37,12 +41,9 @@ gem 'friendly_id', "4.0.9"
 gem 'jquery-rails'
 gem "thin", ">= 1.5.0"
 gem "devise", ">= 2.2.3"
-gem "rolify", ">= 3.2.0"
 gem "figaro", ">= 0.6.3"
 gem "libv8", ">= 3.11.8"
-gem 'rails3-jquery-autocomplete'
 gem 'jquery-ui-rails'
-gem "nested_form"
 gem 'lisbn'
 gem 'carrierwave'
 gem 'money-rails'
