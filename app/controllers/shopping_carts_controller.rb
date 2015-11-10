@@ -103,7 +103,7 @@ class ShoppingCartsController < ApplicationController
                                            :email => @shopping_cart.shipping_email,
                                            :card  => params[:stripe_token]
                                            )
-        
+
         charge = Stripe::Charge.create(
                                        :customer    => customer.id,
                                        :amount      => @shopping_cart.total.cents,
