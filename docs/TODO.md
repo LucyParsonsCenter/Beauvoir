@@ -12,7 +12,6 @@ This is, well, a to-do list, along with some notes and so on.
 * build new sitewide nav header 
 * redo checkout page
 * flesh out static pages (help, about, etc)
-* general gem upgrades
 * general feature cleanup/code removal
 
 ##Unstarted:
@@ -34,3 +33,4 @@ This is, well, a to-do list, along with some notes and so on.
 * switch from erb to haml
 * set up a dev environment with Vagrant
 * set up a semaphore account
+* general gem upgrades
