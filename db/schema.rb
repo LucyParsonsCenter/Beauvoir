@@ -124,78 +124,6 @@ ActiveRecord::Schema.define(version: 20150215011655) do
   add_index "editions", ["publisher_id"], name: "index_editions_on_publisher_id", using: :btree
   add_index "editions", ["title_id"], name: "index_editions_on_title_id", using: :btree
 
-  create_table "event_locations", force: :cascade do |t|
-    t.string   "title",       limit: 255
-    t.string   "url",         limit: 255
-    t.text     "address",     limit: 65535
-    t.text     "description", limit: 65535
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
-  end
-
-  create_table "event_shifts", force: :cascade do |t|
-    t.integer  "event_staffer_id", limit: 4
-    t.integer  "event_id",         limit: 4
-    t.text     "notes",            limit: 65535
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
-  end
-
-  add_index "event_shifts", ["event_id"], name: "index_event_shifts_on_event_id", using: :btree
-  add_index "event_shifts", ["event_staffer_id"], name: "index_event_shifts_on_event_staffer_id", using: :btree
-
-  create_table "event_staffers", force: :cascade do |t|
-    t.text     "name",       limit: 65535
-    t.text     "email",      limit: 65535
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
-  end
-
-  create_table "event_title_links", force: :cascade do |t|
-    t.integer  "event_id",   limit: 4
-    t.integer  "title_id",   limit: 4
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
-  end
-
-  add_index "event_title_links", ["event_id"], name: "index_event_title_links_on_event_id", using: :btree
-  add_index "event_title_links", ["title_id"], name: "index_event_title_links_on_title_id", using: :btree
-
-  create_table "events", force: :cascade do |t|
-    t.string   "title",                  limit: 255
-    t.text     "description",            limit: 65535
-    t.integer  "event_location_id",      limit: 4
-    t.datetime "event_start"
-    t.datetime "event_end"
-    t.boolean  "published",              limit: 1
-    t.datetime "created_at",                           null: false
-    t.datetime "updated_at",                           null: false
-    t.string   "picture",                limit: 255
-    t.text     "introduction",           limit: 65535
-    t.boolean  "show_on_red_emmas_page", limit: 1
-    t.boolean  "show_on_2640_page",      limit: 1
-    t.text     "internal_notes",         limit: 65535
-    t.datetime "event_setup_starts"
-    t.datetime "event_breakdown_ends"
-    t.text     "rental_payment_info",    limit: 65535
-    t.text     "facebook_url",           limit: 65535
-  end
-
-  add_index "events", ["event_location_id"], name: "index_events_on_event_location_id", using: :btree
-
-  create_table "images", force: :cascade do |t|
-    t.string   "title",       limit: 255
-    t.string   "the_image",   limit: 255
-    t.integer  "imagey_id",   limit: 4
-    t.string   "imagey_type", limit: 255
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
-    t.text     "description", limit: 65535
-    t.string   "link",        limit: 255
-  end
-
-  add_index "images", ["imagey_id", "imagey_type"], name: "index_images_on_imagey_id_and_imagey_type", using: :btree
-
   create_table "inventories", force: :cascade do |t|
     t.string   "name",       limit: 255
     t.text     "notes",      limit: 65535
@@ -271,59 +199,6 @@ ActiveRecord::Schema.define(version: 20150215011655) do
   add_index "pages", ["parent_id"], name: "index_pages_on_parent_id", using: :btree
   add_index "pages", ["published"], name: "index_pages_on_published", using: :btree
   add_index "pages", ["slug"], name: "index_pages_on_slug", unique: true, using: :btree
-
-  create_table "post_categories", force: :cascade do |t|
-    t.string   "name",       limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-    t.string   "layout",     limit: 255
-  end
-
-  create_table "post_category_memberships", force: :cascade do |t|
-    t.integer  "post_id",          limit: 4
-    t.integer  "post_category_id", limit: 4
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
-  end
-
-  add_index "post_category_memberships", ["post_category_id"], name: "index_post_category_memberships_on_post_category_id", using: :btree
-  add_index "post_category_memberships", ["post_id"], name: "index_post_category_memberships_on_post_id", using: :btree
-
-  create_table "post_title_links", force: :cascade do |t|
-    t.integer  "post_id",    limit: 4
-    t.integer  "title_id",   limit: 4
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
-  end
-
-  add_index "post_title_links", ["post_id"], name: "index_post_title_links_on_post_id", using: :btree
-  add_index "post_title_links", ["title_id"], name: "index_post_title_links_on_title_id", using: :btree
-
-  create_table "post_title_list_links", force: :cascade do |t|
-    t.integer  "post_id",       limit: 4
-    t.integer  "title_list_id", limit: 4
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
-  end
-
-  add_index "post_title_list_links", ["post_id"], name: "index_post_title_list_links_on_post_id", using: :btree
-  add_index "post_title_list_links", ["title_list_id"], name: "index_post_title_list_links_on_title_list_id", using: :btree
-
-  create_table "posts", force: :cascade do |t|
-    t.string   "title",            limit: 255
-    t.string   "slug",             limit: 255
-    t.text     "introduction",     limit: 65535
-    t.text     "body",             limit: 65535
-    t.integer  "post_category_id", limit: 4
-    t.boolean  "published",        limit: 1
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
-    t.string   "audio",            limit: 255
-  end
-
-  add_index "posts", ["post_category_id"], name: "index_posts_on_post_category_id", using: :btree
-  add_index "posts", ["published"], name: "index_posts_on_published", using: :btree
-  add_index "posts", ["slug"], name: "index_posts_on_slug", unique: true, using: :btree
 
   create_table "publishers", force: :cascade do |t|
     t.string   "name",        limit: 255
@@ -425,45 +300,6 @@ ActiveRecord::Schema.define(version: 20150215011655) do
 
   add_index "sale_orders", ["customer_id"], name: "index_sale_orders_on_customer_id", using: :btree
   add_index "sale_orders", ["user_id"], name: "index_sale_orders_on_user_id", using: :btree
-
-  create_table "shopping_cart_line_items", force: :cascade do |t|
-    t.integer  "shopping_cart_id", limit: 4
-    t.integer  "edition_id",       limit: 4
-    t.integer  "quantity",         limit: 4
-    t.integer  "cost_in_cents",    limit: 4
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
-  end
-
-  add_index "shopping_cart_line_items", ["edition_id"], name: "index_shopping_cart_line_items_on_edition_id", using: :btree
-  add_index "shopping_cart_line_items", ["shopping_cart_id"], name: "index_shopping_cart_line_items_on_shopping_cart_id", using: :btree
-
-  create_table "shopping_carts", force: :cascade do |t|
-    t.string   "session_id",            limit: 255
-    t.string   "submitted",             limit: 255
-    t.string   "shipping_name",         limit: 255
-    t.string   "shipping_address_1",    limit: 255
-    t.string   "shipping_address_2",    limit: 255
-    t.string   "shipping_state",        limit: 255
-    t.string   "shipping_city",         limit: 255
-    t.string   "shipping_zip",          limit: 255
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
-    t.string   "shipping_method",       limit: 255
-    t.string   "shipping_email",        limit: 255
-    t.boolean  "shipping_subscribe",    limit: 1
-    t.string   "shipping_stripe_id",    limit: 255
-    t.datetime "submitted_when"
-    t.boolean  "deferred",              limit: 1
-    t.datetime "completed_when"
-    t.boolean  "completed",             limit: 1
-    t.text     "notes",                 limit: 65535
-    t.string   "shipping_phone",        limit: 255
-    t.string   "shipping_address_type", limit: 255
-    t.string   "shipping_ok_to_leave",  limit: 255
-    t.text     "shipping_notes",        limit: 65535
-    t.boolean  "shipping_subscribed",   limit: 1
-  end
 
   create_table "title_category_memberships", force: :cascade do |t|
     t.integer  "title_id",    limit: 4
