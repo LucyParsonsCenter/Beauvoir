@@ -29,20 +29,20 @@ group :production do
   gem 'rails_12factor'
 end
 
-gem "bootstrap-sass", "~> 3.3.5"
-gem 'sass-rails', '>= 3.2'
+gem "bootstrap-sass"
+gem 'sass-rails'
 gem 'coffee-rails'
 gem 'uglifier', '>= 1.0.3'
 gem "therubyracer", ">= 0.11.3", :platform => :ruby, :require => "v8"
 gem 'haml'
 gem 'haml-rails'
 gem 'turbolinks'
-gem 'friendly_id', "4.0.9"
+gem 'friendly_id'
 gem 'jquery-rails'
-gem "thin", ">= 1.5.0"
-gem "devise", ">= 2.2.3"
-gem "figaro", ">= 0.6.3"
-gem "libv8", ">= 3.11.8"
+gem "thin"
+gem "devise"
+gem "figaro"
+gem "libv8"
 gem 'jquery-ui-rails'
 gem 'lisbn'
 gem 'money-rails'
@@ -50,19 +50,15 @@ gem 'rest_in_place'
 gem 'formtastic'
 gem 'ckeditor'
 gem 'kaminari'
-gem 'sequel'
 gem 'mysql2', '~> 0.3.20'
 gem 'googlebooks'
 gem 'sunspot_rails'
 gem 'sunspot_solr'
 gem "sunspot_with_kaminari"
-gem 'jquery-datetimepicker-rails'
 gem "progress_bar"
 gem 'lazy_high_charts'
-gem 'ri_cal', :git=>"git://github.com/johm/ri_cal"
 gem "simple_calendar"
 gem "mediaelement_rails"
-gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 gem "addressable"
 gem 'byebug'
 gem 'ransack'
