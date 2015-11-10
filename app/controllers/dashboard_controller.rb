@@ -2,9 +2,6 @@ class DashboardController < ApplicationController
 
   before_filter :authenticate_user!
 
-  autocomplete :publisher,:name,:full=>true,:display_value=>:name_and_id,:limit => 20
-  autocomplete :title_list,:name,:full=>true,:display_value=>:name
-
   # GET /titles
   # GET /titles.json
 

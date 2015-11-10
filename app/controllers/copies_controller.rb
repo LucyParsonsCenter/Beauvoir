@@ -99,7 +99,7 @@ class CopiesController < ApplicationController
     @edition_search=Edition.search do
       fulltext params[:term]
     end
-    
+
     @copies_data=@edition_search.results.collect do |edition|
       @copies=edition.copies.instock.order("price_in_cents desc")
       copies_on_inventory_already= Inventory.find(params[:inventory_id]).copies.collect {|c| c.id}
@@ -111,7 +111,7 @@ class CopiesController < ApplicationController
     respond_to do |format|
       format.json { render json: @copies_data.flatten }
     end
-    
+
   end
 
   def autocomplete

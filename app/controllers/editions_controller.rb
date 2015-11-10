@@ -1,6 +1,5 @@
 class EditionsController < ApplicationController
   before_filter :authenticate_user! , :except=>[:show,:byisbn]
-  autocomplete :title,:title,:full=>true,:display_value=>:title_and_id,:limit => 20
   before_filter :hack_out_params , :only=>[:create,:update]
 
   # GET /editions
@@ -106,7 +105,7 @@ class EditionsController < ApplicationController
     @edition_search=Edition.search do
       fulltext params[:term]
     end
-    
+
     @editions_data=@edition_search.results.collect do |edition|
       hash = {"id" => edition.id.to_s, "label" => "#{edition.title.title} #{edition.number} (#{edition.year_of_publication}) {#{edition.format}} [#{edition.isbn13}]", "value" => "#{edition.title.title} #{edition.number} (#{edition.year_of_publication}) {#{edition.format}} [#{edition.isbn13}]"}
     end

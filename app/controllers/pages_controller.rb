@@ -2,8 +2,6 @@ class PagesController < ApplicationController
   before_filter :authenticate_user!,:except=>[:index,:show] 
   before_filter :hack_out_params , :only=>[:create,:update]
 
-  autocomplete :parent,:title,:full=>true,:display_value=>:title_and_slug,:class_name=>Page
-
   # GET /pages
   # GET /pages.json
   def index
@@ -21,15 +19,15 @@ class PagesController < ApplicationController
     @posts = Post.where(:published => true).order("created_at desc")
 
     respond_to do |format|
-        
+
       format.html {
         if @page.is_hero?
-          render "hero",:layout=>@page.layout 
-        else 
-          render :layout=>@page.layout 
+          render "hero",:layout=>@page.layout
+        else
+          render :layout=>@page.layout
         end
       }
-      
+
       format.json { render json: @page }
     end
   end

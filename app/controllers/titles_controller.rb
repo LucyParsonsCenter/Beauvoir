@@ -1,11 +1,6 @@
 class TitlesController < ApplicationController
   before_filter :authenticate_user!, :except=>[:index,:show]
   before_filter :hack_out_params , :only=>[:create,:update]
-  autocomplete :publisher,:name,:full=>true,:display_value=>:name_and_editions,:limit => 20
-  autocomplete :distributor,:name,:full=>true,:display_value=>:name,:limit => 20
-  autocomplete :title_list,:name,:full=>true,:display_value=>:name
-  autocomplete :category,:name,:full=>true,:display_value=>:name
-
 
   # GET /titles
   # GET /titles.json

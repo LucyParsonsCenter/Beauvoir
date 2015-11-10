@@ -1,11 +1,7 @@
 class PurchaseOrdersController < ApplicationController
-  autocomplete :distributor,:name,:full=>true,:display_value=>:name_and_id
-
-  before_filter :authenticate_user! 
+  before_filter :authenticate_user!
   before_filter :hack_out_params , :only=>[:create,:update]
   helper_method :sort_column, :sort_direction
-
-  
 
   # GET /purchase_orders
   # GET /purchase_orders.json
