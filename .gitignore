@@ -32,7 +32,6 @@ db/*.sqlite3
 *.gz
 *.rbc
 *.sassc
-.rspec
 .redcar/
 .sass-cache
 /config/config.yml
