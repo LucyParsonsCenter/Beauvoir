@@ -45,10 +45,8 @@ gem "figaro", ">= 0.6.3"
 gem "libv8", ">= 3.11.8"
 gem 'jquery-ui-rails'
 gem 'lisbn'
-gem 'carrierwave'
 gem 'money-rails'
-gem 'rmagick'
-gem 'best_in_place'
+gem 'rest_in_place'
 gem "default_value_for"
 gem 'formtastic', '~> 3.1.3'
 gem 'ckeditor', "= 4.0.2"
