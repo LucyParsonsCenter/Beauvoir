@@ -1,8 +1,6 @@
 class TitleListsController < ApplicationController
   before_filter :hack_out_params, :only=>[:create,:update]
   before_filter :authenticate_user!, :except=>[:index,:show]
-  autocomplete :title,:title,:full=>true,:display_value=>:title_and_id, :limit => 20
-  autocomplete :title_list,:name,:full=>true,:display_value=>:name
   helper_method :sort_column, :sort_direction
 
   # GET /title_lists
