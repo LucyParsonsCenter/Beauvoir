@@ -12,4 +12,4 @@ ADMIN_EMAIL: test.email@test.biz
 ADMIN_PASSWORD: test
 ROLES: ["admin", "user", "VIP"]
 THEME: "redemmas"
-SITENAME: "Borges - Development"
+SITENAME: "Beauvoir - Development"
