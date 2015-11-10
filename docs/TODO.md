@@ -34,3 +34,4 @@ This is, well, a to-do list, along with some notes and so on.
 * set up a dev environment with Vagrant
 * set up a semaphore account
 * general gem upgrades
+* clean out schema.rb
