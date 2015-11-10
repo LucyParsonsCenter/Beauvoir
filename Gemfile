@@ -47,12 +47,9 @@ gem 'jquery-ui-rails'
 gem 'lisbn'
 gem 'money-rails'
 gem 'rest_in_place'
-gem "default_value_for"
-gem 'formtastic', '~> 3.1.3'
-gem 'ckeditor', "= 4.0.2"
-gem "mini_magick"
+gem 'formtastic'
+gem 'ckeditor'
 gem 'kaminari'
-gem "bootstrap-switch-rails", "= 0.1.1"
 gem 'sequel'
 gem 'mysql2', '~> 0.3.20'
 gem 'googlebooks'
