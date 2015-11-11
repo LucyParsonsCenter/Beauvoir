@@ -92,8 +92,6 @@ GEM
     factory_girl_rails (4.5.0)
       factory_girl (~> 4.5.0)
       railties (>= 3.0.0)
-    figaro (1.1.1)
-      thor (~> 0.14)
     fontsquirrel-download (1.1.1)
       rails (>= 3.1)
       rubyzip
@@ -329,7 +327,6 @@ DEPENDENCIES
   devise
   email_spec (>= 1.4.0)
   factory_girl_rails
-  figaro
   fontsquirrel-download
   formtastic
   friendly_id
