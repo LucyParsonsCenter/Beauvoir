@@ -19,7 +19,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.provision :shell, privileged: true, inline: <<-SCRIPT
     apt-get -y update
     apt-get -y upgrade
-    apt-get -y install ruby-railties git rbenv bundler build-essential cmake ruby-rmagick ruby-build jvm-7-avian-jre rmagic imagemagick libmagickwand-dev libjetty-extra-java libtomcat7-java silversearcher-ag nodejs-legacy npm
+    apt-get -y install git build-essential cmake ruby-build jvm-7-avian-jre libjetty-extra-java libtomcat7-java silversearcher-ag nodejs-legacy npm
   SCRIPT
 
   # configure database
@@ -51,8 +51,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     curl -sSL https://get.rvm.io | bash -s stable
     source ~/.rvm/scripts/rvm
     rvm install ruby-2.2.3
-    rvm use 2.2.3
+    rvm use ruby-2.2.3
     gem install bundler
+    rvm rvmrc warning ignore allGemfiles
 
     source ~/.profile
     if [ -z "$DEVISE_TOKEN" ]; then
