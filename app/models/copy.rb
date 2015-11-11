@@ -12,7 +12,7 @@ class Copy < ActiveRecord::Base
   monetize :cost_in_cents, :as => "cost"
   monetize :price_in_cents, :as => "price"
 
-  state_machine initial: :instock do
+  state_machine initial: :in_stock do
     event :move_to_library do
       transition in_stock: :checked_in
     end
@@ -29,8 +29,12 @@ class Copy < ActiveRecord::Base
       transition checked_out: :checked_in
     end
 
-    event :mark_lost do
-      transition any => :lost
+    event :mark_lost_inventory do
+      transition in_stock: :lost
+    end
+
+    event :mark_lost_library do
+      transition checked_in: :lost
     end
 
     event :mark_found_library do
@@ -49,9 +53,9 @@ class Copy < ActiveRecord::Base
     "$#{price}" + (notes || is_used? ? " [#{notes} #{'USED' if is_used?}]" : "" )
   end
 
-  def sell(sale_price)
+  def sell_copy(sale_price)
     self.price=sale_price # this comes from the line item
-    self.status="SOLD"
+    self.sell
     self.deinventoried_when=DateTime.now
     self.save!
   end
