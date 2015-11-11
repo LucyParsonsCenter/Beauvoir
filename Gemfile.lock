@@ -345,7 +345,6 @@ DEPENDENCIES
   money-rails
   pg
   progress_bar
-  pry
   pry-rails
   quiet_assets (>= 1.0.2)
   rails (= 4.2.4)
