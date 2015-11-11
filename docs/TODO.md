@@ -13,6 +13,9 @@ This is, well, a to-do list, along with some notes and so on.
 * redo checkout page
 * flesh out static pages (help, about, etc)
 * general feature cleanup/code removal/4.2 compat
+    * model and controller cleanup/removal
+    * get initializers sorted
+    * configure gems (devise, figaro)
 * get the build passing without errors
 
 ##Unstarted:
