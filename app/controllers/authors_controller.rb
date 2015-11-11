@@ -1,8 +1,6 @@
 class AuthorsController < ApplicationController
   before_filter :authenticate_user! 
 
-  # GET /authors
-  # GET /authors.json
   def index
     @authors = Author.all
     respond_to do |format|
@@ -11,8 +9,6 @@ class AuthorsController < ApplicationController
     end
   end
 
-  # GET /authors/1
-  # GET /authors/1.json
   def show
     @author = Author.find(params[:id])
 
@@ -22,8 +18,6 @@ class AuthorsController < ApplicationController
     end
   end
 
-  # GET /authors/new
-  # GET /authors/new.json
   def new
     @author = Author.new
 
