@@ -15,7 +15,7 @@ end
 group :development, :test do
   gem 'sqlite3-ruby', '~> 1.3.0', :require => 'sqlite3'
   gem 'fontsquirrel-download'
-  gem 'rspec-rails', '>= 2.12.2', :group => [:development, :test]
+  gem 'rspec-rails', '>= 2.12.2'
 end
 
 group :test do
