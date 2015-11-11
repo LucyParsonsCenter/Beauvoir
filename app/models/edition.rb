@@ -3,25 +3,18 @@ class Edition < ActiveRecord::Base
   has_many :copies
   has_many :purchase_order_line_items
   has_many :invoice_line_items
-
   has_many :distributors, :through => :copies
   belongs_to :publisher
 
   validate :isbns_are_valid
   before_validation :normalize_isbns
   before_save :copy_isbns
-  mount_uploader :cover, ImageUploader
 
   monetize :list_price_cents
-  default_value_for :list_price_cents, 0
 
   scope :published, -> { where(:in_print => true) }
-  default_value_for :in_print, true
-
   scope :newest_first, -> { order("year_of_publication desc") }
   scope :without_edition, lambda {|e| e ? {:conditions => ["id != ?", e.id]} : {} }
-
-  default_value_for :format, "Paperback"
 
   def has_copies_in_stock?
     copies.with_state(:in_stock).length > 0
