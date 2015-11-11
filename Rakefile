@@ -2,4 +2,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Borges::Application.load_tasks
+Beauvoir::Application.load_tasks

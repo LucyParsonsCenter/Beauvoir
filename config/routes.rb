@@ -1,4 +1,4 @@
-Borges::Application.routes.draw do
+Beauvoir::Application.routes.draw do
   get '/book/:isbn', to: 'editions#byisbn'
   get '/book/', to: 'editions#byisbn'
 

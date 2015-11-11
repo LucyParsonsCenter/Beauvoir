@@ -221,7 +221,7 @@ module ApplicationHelper
   end
 
   def sitename
-    ENV["SITENAME"] || "Borges"
+    ENV["SITENAME"] || "Beauvoir"
   end
 
   def layouts
