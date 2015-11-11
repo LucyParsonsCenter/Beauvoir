@@ -13,7 +13,6 @@ RSpec.describe Edition, type: :model do
 
     it "should throw an error if the ISBN is invalid" do
       expect { FactoryGirl.create(:edition, isbn10: "1234567890") }.to raise_error
-        # to raise_error(ActiveRecord::RecordInvalid:Validation failed, "Isbn10 not valid")
     end
   end
 end
