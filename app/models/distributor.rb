@@ -1,7 +1,5 @@
 class Distributor < ActiveRecord::Base
 
-#  has_many :copies
-#  has_many :editions, :through => :copies
   has_many :invoice_line_items, :through => :invoices
   has_many :copies, :through => :invoice_line_items
   has_many :editions, :through => :copies
@@ -18,10 +16,7 @@ class Distributor < ActiveRecord::Base
     "#{name} (#{id})"
   end
 
-
-
   def merge_stuff_from_distributor(unneeded_distributor_id)
-
     begin
       unneeded_distributor=Distributor.find(unneeded_distributor_id)
     rescue
@@ -49,7 +44,4 @@ class Distributor < ActiveRecord::Base
     self.save!
     unneeded_distributor.destroy
   end
-
-
-
 end
