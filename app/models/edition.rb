@@ -5,9 +5,7 @@ class Edition < ActiveRecord::Base
   has_many :invoice_line_items
 
   has_many :distributors, :through => :copies
-
   belongs_to :publisher
-
 
   validate :isbns_are_valid
   before_validation :normalize_isbns
@@ -25,16 +23,8 @@ class Edition < ActiveRecord::Base
 
   default_value_for :format, "Paperback"
 
-#   searchable do
-#     text :isbn10,:isbn13
-
-#     text :title do
-#       title.title rescue ""
-#     end
-#   end
-
   def has_copies_in_stock?
-    copies.where("status"=>"STOCK").length > 0
+    copies.with_state(:in_stock).length > 0
   end
 
   def my_stock_status
@@ -48,7 +38,7 @@ class Edition < ActiveRecord::Base
   end
 
   def my_online_price
-    has_copies_in_stock? ? copies.where("status"=>"STOCK").order("price_in_cents desc").first.price : ""
+    has_copies_in_stock? ? copies.with_state(:in_stock).order("price_in_cents desc").first.price : ""
   end
 
   def self.formats
