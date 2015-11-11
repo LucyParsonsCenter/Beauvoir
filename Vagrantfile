@@ -31,22 +31,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
     sudo -u postgres PGPASSWORD=postgres psql -U postgres -c "CREATE USER root WITH PASSWORD 'abc123';"
     sudo -u postgres PGPASSWORD=postgres psql -U postgres -c "ALTER USER root CREATEDB; ALTER ROLE root SUPERUSER;"
-
-#     debconf-set-selections <<< 'mysql-server mysql-server/root_password password abc123'
-#     debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password abc123'
-
-#     apt-get -y install mysql-server-5.5 libmysqlclient-dev libsqlite3-dev
-
-#     echo "configuring database..."
-#     echo "create user 'borges@localhost' identified by 'password'" | mysql -u root --password=abc123
-#     echo "create database borgesdev" | mysql -u root --password=abc123
-#     echo "create database borgestest" | mysql -u root --password=abc123
-#     echo "create database borgesprod" | mysql -u root --password=abc123
-
-#     echo "grant all privileges on borgesdev.* to 'borges'@'%' identified by 'password'" | mysql -u root --password='abc123'
-#     echo "grant all privileges on borgestest.* to 'borges'@'%' identified by 'password'" | mysql -u root --password='abc123'
-#     echo "grant all privileges on borgesprod.* to 'borges'@'%' identified by 'password'" | mysql -u root --password='abc123'
-#     echo "done."
+    sudo -u postgres PGPASSWORD=postgres psql -U postgres -c "CREATE USER beauvoir WITH PASSWORD 'abc123';"
+    sudo -u postgres PGPASSWORD=postgres psql -U postgres -c "ALTER USER beauvoir CREATEDB; ALTER ROLE root SUPERUSER;"
   SCRIPT
 
   # as regular user (vagrant)
@@ -58,9 +44,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     source ~/.rvm/scripts/rvm
     rvm install ruby-2.2.3
     rvm use ruby-2.2.3
-    gem install bundler
     rvm rvmrc warning ignore allGemfiles
     cd /vagrant
+    gem install bundler
     bundle install --full-index -j4
     source ~/.profile
 
@@ -77,7 +63,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     rm -r solr
     rm config/sunspot.yml
 
+    rm config/database.yml
     cp config/database.test.yml config/database.yml
+    rm config/application.yml
     cp config/application.test.yml config/application.yml
 
     bundle exec rake db:create

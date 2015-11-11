@@ -1,0 +1,23 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: beauvoir-development
+  pool: 5
+  username: beauvoir
+  password: abc123
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: beauvoir-test
+  pool: 5
+  username: beauvoir
+  password: abc123
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: beauvoir-production
+  pool: 5
+  username: beauvoir
+  password:
