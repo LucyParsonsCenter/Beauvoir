@@ -12,12 +12,35 @@ class Copy < ActiveRecord::Base
   monetize :cost_in_cents, :as => "cost"
   monetize :price_in_cents, :as => "price"
 
-  scope :instock, -> { where("status"=>"STOCK")}
-  scope :lost, -> { where("status"=>"LOST")}
-  scope :returned, -> { where("status"=>"RETURNED")}
-  scope :sold, -> { where("status"=>"SOLD")}
+  state_machine initial: :instock do
+    event :move_to_library do
+      transition in_stock: :checked_in
+    end
 
+    event :sell do
+      transition in_stock: :sold
+    end
 
+    event :check_out do
+      transition checked_in: :checked_out
+    end
+
+    event :check_in do
+      transition checked_out: :checked_in
+    end
+
+    event :mark_lost do
+      transition any => :lost
+    end
+
+    event :mark_found_library do
+      transition lost: :checked_in
+    end
+
+    event :mark_found_inventory do
+      transition lost: :in_stock
+    end
+  end
 
   before_validation :set_cost
   #after_save :reindex_title
