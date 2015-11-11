@@ -28,6 +28,7 @@ This is, well, a to-do list, along with some notes and so on.
 * switch to postgresql
 * set up CI deployments with semaphore and heroku
 * fiddle with react for front-end stuff
+* sort out ssl stuff
 
 ##Completed:
 
