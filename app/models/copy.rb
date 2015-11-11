@@ -1,15 +1,14 @@
 class Copy < ActiveRecord::Base
-
   belongs_to :edition, :touch => true
   has_one :title, :through => :edition
   belongs_to :invoice_line_item
-  has_one :invoice,:through => :invoice_line_item 
+  has_one :invoice,:through => :invoice_line_item
   has_one :sale_order_line_item
-  has_one :sale_order,:through => :sale_order_line_item 
+  has_one :sale_order,:through => :sale_order_line_item
   has_one :return_order_line_item
-  has_one :return_order,:through => :return_order_line_item 
+  has_one :return_order,:through => :return_order_line_item
   belongs_to :owner
-  has_many :inventory_copy_confirmations  
+  has_many :inventory_copy_confirmations
   monetize :cost_in_cents, :as => "cost"
   monetize :price_in_cents, :as => "price"
 
@@ -17,7 +16,9 @@ class Copy < ActiveRecord::Base
   scope :lost, -> { where("status"=>"LOST")}
   scope :returned, -> { where("status"=>"RETURNED")}
   scope :sold, -> { where("status"=>"SOLD")}
-  
+
+
+
   before_validation :set_cost
   #after_save :reindex_title
 
