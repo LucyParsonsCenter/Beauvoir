@@ -48,11 +48,11 @@ class Edition < ActiveRecord::Base
 
   def isbns_are_valid
     unless isbn10.blank? || Lisbn.new(isbn10).valid?
-      errors.add(:isbn10,"Not valid")
+      errors.add(:isbn10,"not valid")
     end
 
     unless isbn13.blank? || Lisbn.new(isbn13).valid?
-      errors.add(:isbn13,"Not valid")
+      errors.add(:isbn13,"not valid")
     end
   end
 
