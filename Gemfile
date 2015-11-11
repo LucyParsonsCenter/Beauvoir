@@ -13,7 +13,6 @@ group :development do
 end
 
 group :development, :test do
-  gem 'sqlite3-ruby', '~> 1.3.0', :require => 'sqlite3'
   gem 'fontsquirrel-download'
   gem 'rspec-rails', '>= 2.12.2'
 end
@@ -50,7 +49,6 @@ gem 'rest_in_place'
 gem 'formtastic'
 gem 'ckeditor'
 gem 'kaminari'
-gem 'mysql2', '~> 0.3.20'
 gem 'googlebooks'
 gem 'sunspot_rails'
 gem 'sunspot_solr'
@@ -62,5 +60,6 @@ gem 'mediaelement_rails'
 gem 'addressable'
 gem 'byebug'
 gem 'ransack'
-gem 'factory_girl'
+gem 'factory_girl_rails'
 gem 'state_machines-activerecord'
+gem 'pg'
