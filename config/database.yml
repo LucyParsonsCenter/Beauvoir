@@ -3,16 +3,16 @@ development:
   encoding: unicode
   database: beauvoir-development
   pool: 5
-  username: beauvoir
-  password: abc123
+  username: vagrant
+  password:
 
 test:
   adapter: postgresql
   encoding: unicode
   database: beauvoir-test
   pool: 5
-  username: beauvoir
-  password: abc123
+  username: vagrant
+  password:
 
 production:
   adapter: postgresql
