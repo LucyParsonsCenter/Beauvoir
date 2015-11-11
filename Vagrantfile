@@ -24,19 +24,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     apt-get -y upgrade
 
     apt-get -y install git build-essential cmake ruby-build jvm-7-avian-jre libjetty-extra-java libtomcat7-java silversearcher-ag nodejs-legacy npm postgresql-9.3 postgresql-server-dev-9.3 postgresql-contrib-9.3 libyaml-dev sqlite3 autoconf libgdbm-dev libncurses5-dev automake libtool bison pkg-config libffi-dev libpq-dev
+    sudo -u postgres createuser --superuser vagrant
   SCRIPT
 
   # configure database
   config.vm.provision :shell, privileged: true, inline: <<-SCRIPT
-
-    sudo -u postgres PGPASSWORD=postgres psql -U postgres -c "CREATE USER root WITH PASSWORD 'abc123';"
-    sudo -u postgres PGPASSWORD=postgres psql -U postgres -c "ALTER USER root CREATEDB; ALTER ROLE root SUPERUSER;"
-    # sudo -u postgres PGPASSWORD=postgres psql -U postgres -c "CREATE USER beauvoir WITH PASSWORD 'abc123';"
-    # sudo -u postgres PGPASSWORD=postgres psql -U postgres -c "ALTER USER beauvoir CREATEDB; ALTER ROLE beauvoir SUPERUSER;"
-    # sudo -u postgres PGPASSWORD=postgres psql -U postgres -c "CREATE role beauvoir WITH PASSWORD 'abc123';"
-    sudo -u postgres PGPASSWORD=postgres psql -U postgres -c "create user beauvoir with password 'abc123';"
-    sudo -u postgres PGPASSWORD=postgres psql -U postgres -c "alter role beauvoir superuser createdb replication;"
- 
   SCRIPT
 
   # as regular user (vagrant)
@@ -71,8 +63,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     cp config/application.test.yml config/application.yml
 
     bundle exec rake db:create
-    bundle exec rake db:schema:load
     bundle exec rake db:migrate
+    bundle exec rake db:migrate RAILS_ENV="test"
     rails generate sunspot_rails:install
     rake sunspot:solr:start
     echo "cd /vagrant" >> ~/.profile
