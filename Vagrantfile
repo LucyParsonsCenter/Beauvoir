@@ -15,7 +15,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     vb.cpus = 2
   end
 
-  # install dependencies
+  # install dependencies, configure db
   config.vm.provision :shell, privileged: true, inline: <<-SCRIPT
     sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ precise-pgdg main" >> /etc/apt/sources.list.d/pgdg.list'
     wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add -
@@ -27,11 +27,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     sudo -u postgres createuser --superuser vagrant
   SCRIPT
 
-  # configure database
-  config.vm.provision :shell, privileged: true, inline: <<-SCRIPT
-  SCRIPT
-
   # as regular user (vagrant)
+  # set up ruby, install gems, set up db
   config.vm.provision :shell, privileged: false, inline: <<-SCRIPT
     echo "\n\nconfiguring ruby/rails environment..."
     git clone https://github.com/aliceriot/beauvoir-utils ~/beauvoir-utils
