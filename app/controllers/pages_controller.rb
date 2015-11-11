@@ -2,8 +2,6 @@ class PagesController < ApplicationController
   before_filter :authenticate_user!,:except=>[:index,:show] 
   before_filter :hack_out_params , :only=>[:create,:update]
 
-  # GET /pages
-  # GET /pages.json
   def index
     @pages = Page.all
     respond_to do |format|
@@ -12,8 +10,6 @@ class PagesController < ApplicationController
     end
   end
 
-  # GET /pages/1
-  # GET /pages/1.json
   def show
     @page = Page.find(params[:id])
     @posts = Post.where(:published => true).order("created_at desc")
