@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150215011655) do
+ActiveRecord::Schema.define(version: 20151111195323) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -85,6 +85,7 @@ ActiveRecord::Schema.define(version: 20150215011655) do
     t.datetime "deinventoried_when"
     t.string   "status"
     t.integer  "invoice_line_item_id"
+    t.text     "state"
   end
 
   add_index "copies", ["edition_id"], name: "index_copies_on_edition_id", using: :btree
