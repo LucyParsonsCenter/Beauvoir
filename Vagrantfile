@@ -68,5 +68,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     echo "done."
 
     echo "alias dbmigrate='bundle exec rake db:migrate && bundle exec rake db:migrate RAILS_ENV="test"'" >> ~/.bashrc
+    echo "alias runspec='bundle exec bin/rspec'" >> ~/.bashrc
   SCRIPT
 end
