@@ -66,5 +66,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     rake sunspot:solr:start
     echo "cd /vagrant" >> ~/.profile
     echo "done."
+
+    echo "alias dbmigrate='bundle exec rake db:migrate && bundle exec rake db:migrate RAILS_ENV="test"'" >> ~/.bashrc
   SCRIPT
 end
