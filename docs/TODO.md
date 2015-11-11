@@ -12,7 +12,8 @@ This is, well, a to-do list, along with some notes and so on.
 * build new sitewide nav header 
 * redo checkout page
 * flesh out static pages (help, about, etc)
-* general feature cleanup/code removal
+* general feature cleanup/code removal/4.2 compat
+* get the build passing without errors
 
 ##Unstarted:
 
@@ -26,6 +27,7 @@ This is, well, a to-do list, along with some notes and so on.
 * figure out how to deploy everything
 * switch to postgresql
 * set up CI deployments with semaphore and heroku
+* fiddle with react for front-end stuff
 
 ##Completed:
 
