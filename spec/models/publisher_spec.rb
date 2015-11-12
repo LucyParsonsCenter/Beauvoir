@@ -7,9 +7,8 @@ RSpec.describe Publisher, type: :model do
     end
 
     it "should let you create a publisher" do
-      binding.pry
-
+      expect(@publisher.name).to eq("Rendom Hoose")
+      expect(@publisher.description).to eq("well, you know")
     end
-
   end
 end
