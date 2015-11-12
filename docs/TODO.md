@@ -5,7 +5,7 @@ This is, well, a to-do list, along with some notes and so on.
 ##In progress:
 
 * add library functionality
-    * new controller
+    * new controller?
     * manage via state on Copies
 * use bootstrap for layout
 * make `rake infoshopkeeper:import` compatible with rails 4.2
@@ -13,14 +13,12 @@ This is, well, a to-do list, along with some notes and so on.
 * redo checkout page
 * flesh out static pages (help, about, etc)
 * general feature cleanup/code removal/4.2 compat
-    * model and controller cleanup/removal
     * get initializers sorted
     * configure gems (devise, figaro)
-* get the build passing without errors
+* write tests (there are none...)
 
 ##Unstarted:
 
-* write tests (there are none...)
 * admin interface (activeadmin? administrate?)
 * build new daily report
 * come up with a colorscheme
@@ -30,7 +28,7 @@ This is, well, a to-do list, along with some notes and so on.
 * figure out how to deploy everything
 * switch to postgresql
 * set up CI deployments with semaphore and heroku
-* fiddle with react for front-end stuff
+* fiddle with react for front-end stuff?
 * sort out ssl stuff
 
 ##Completed:
@@ -41,3 +39,5 @@ This is, well, a to-do list, along with some notes and so on.
 * set up a semaphore account
 * general gem upgrades
 * clean out schema.rb
+* get the build passing without errors
+* model and controller cleanup/removal
