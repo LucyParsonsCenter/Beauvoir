@@ -16,7 +16,6 @@ class Publisher < ActiveRecord::Base
 
 
   def merge_stuff_from_publisher(unneeded_publisher_id)
-
     begin
       unneeded_publisher=Publisher.find(unneeded_publisher_id)
     rescue
@@ -32,7 +31,5 @@ class Publisher < ActiveRecord::Base
       e.save!
     end
     unneeded_publisher.destroy
-
   end
-
 end
