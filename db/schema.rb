@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151111213407) do
+ActiveRecord::Schema.define(version: 20151112032821) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -197,23 +197,6 @@ ActiveRecord::Schema.define(version: 20151111213407) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  create_table "pages", force: :cascade do |t|
-    t.string   "title"
-    t.string   "slug"
-    t.text     "introduction"
-    t.text     "body"
-    t.integer  "parent_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.boolean  "published"
-    t.boolean  "is_hero"
-    t.boolean  "is_image_grid"
-  end
-
-  add_index "pages", ["parent_id"], name: "index_pages_on_parent_id", using: :btree
-  add_index "pages", ["published"], name: "index_pages_on_published", using: :btree
-  add_index "pages", ["slug"], name: "index_pages_on_slug", unique: true, using: :btree
 
   create_table "publishers", force: :cascade do |t|
     t.string   "name"
