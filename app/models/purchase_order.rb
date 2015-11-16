@@ -1,12 +1,10 @@
 class PurchaseOrder < ActiveRecord::Base
-  # there should be a mechanism by which purchase order line items can be checked off against invoices
   validates :number, :uniqueness => true
   validates :number, :presence => true
 
-  belongs_to :distributor #where the books came from
-  belongs_to :owner #who gets the books
+  belongs_to :distributor
 
-  has_many :purchase_order_line_items,dependent: :destroy
+  has_many :purchase_order_line_items, dependent: :destroy
 
   def self.tags
     ['Normal','Frontlist','Course books','Event order','Tabling order','Special order','Used books','Remainders']
@@ -15,7 +13,7 @@ class PurchaseOrder < ActiveRecord::Base
   def estimated_total
     purchase_order_line_items.inject(Money.new(0)) {|sum,li| sum+li.ext_price   }
   end
- 
+
   def estimated_total_string
     purchase_order_line_items.inject(Money.new(0)) {|sum,li| sum+li.ext_price   }.to_s
   end
