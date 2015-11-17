@@ -101,7 +101,6 @@ class SaleOrderController < ApplicationController
   private
 
   def sale_order_params
-    params.require( :customer_po)
-    params.permit( :customer_po, :discount_percent, :posted,:notes)
+    params.permit( :discount_percent, :posted,:notes)
   end
 end
