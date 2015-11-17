@@ -231,6 +231,8 @@ GEM
       activesupport (>= 3.0)
       i18n
       polyamorous (~> 1.2)
+    react-bootstrap-rails (0.27.3)
+      rails (>= 3.1)
     react-rails (1.4.2)
       babel-transpiler (>= 0.7.0)
       coffee-script-source (~> 1.8)
@@ -362,6 +364,7 @@ DEPENDENCIES
   rails (= 4.2.4)
   rails_12factor
   ransack
+  react-bootstrap-rails
   react-rails (~> 1.4.0)
   rest_in_place
   rspec-rails (>= 2.12.2)

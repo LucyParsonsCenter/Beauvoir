@@ -30,6 +30,7 @@ group :production do
 end
 
 gem 'bootstrap-sass'
+gem 'react-bootstrap-rails'
 gem 'sass-rails'
 gem 'coffee-rails'
 gem 'uglifier', '>= 1.0.3'
