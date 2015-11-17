@@ -4,6 +4,8 @@ This is, well, a to-do list, along with some notes and so on.
 
 ##In progress:
 
+* fiddle with react for front-end stuff?
+    * write the 'checkout' page w/ react
 * add library functionality
     * new controller?
     * manage via state on Copies
@@ -28,7 +30,6 @@ This is, well, a to-do list, along with some notes and so on.
 * figure out how to deploy everything
 * switch to postgresql
 * set up CI deployments with semaphore and heroku
-* fiddle with react for front-end stuff?
 * sort out ssl stuff
 
 ##Completed:
@@ -41,3 +42,4 @@ This is, well, a to-do list, along with some notes and so on.
 * clean out schema.rb
 * get the build passing without errors
 * model and controller cleanup/removal
+* install react gems
