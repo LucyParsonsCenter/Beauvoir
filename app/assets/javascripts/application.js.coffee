@@ -1,3 +1,7 @@
+#= require react
+#= require react_ujs
+#= require components
+#= require turbolinks
 #= require jquery
 #= require jquery_ujs
 #= require jquery-ui
@@ -10,9 +14,4 @@
 #= require best_in_place
 #= require ckeditor/init
 #= require jquery.datetimepicker
-#= require highcharts/highcharts                                                           
-#= require mediaelement_rails
-#= require highcharts/highcharts-more                                                         
-#= require highcharts/highstock
-#= require turbolinks
 #= require_tree .
