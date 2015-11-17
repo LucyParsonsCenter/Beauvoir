@@ -8,7 +8,7 @@ class SaleOrder < ActiveRecord::Base
   end
 
   def cost_by_owner(owner)
-    sale_order_line_items.inject(Money.new(0)) do |sum,soli| 
+    sale_order_line_items.inject(Money.new(0)) do |sum,soli|
       if soli.copy.owner==owner
         sum+soli.copy.cost 
       else
