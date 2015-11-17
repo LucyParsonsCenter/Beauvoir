@@ -2,7 +2,6 @@ class PurchaseOrderLineItem < ActiveRecord::Base
   belongs_to :edition
   has_one :title, :through => :edition
   belongs_to :purchase_order, :touch => true
-  belongs_to :customer
   has_many :invoice_line_items
   validates :edition,:presence=>true
   validates :purchase_order,:presence=>true
