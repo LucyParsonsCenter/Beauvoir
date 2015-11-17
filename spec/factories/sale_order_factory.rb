@@ -4,5 +4,4 @@ FactoryGirl.define do
     discount_percent 0
     notes "wow, a sale!"
   end
-
 end
