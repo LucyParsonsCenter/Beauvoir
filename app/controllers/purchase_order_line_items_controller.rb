@@ -111,16 +111,9 @@ class PurchaseOrderLineItemsController < ApplicationController
     end
   end
 
-
-  private
-
-  def hack_out_params
-    params[:purchase_order_line_item].delete :customer
-  end
-
   protected
 
-  def purchase_ordeR_line_item_params
-    params.permit(:quantity, :edition_id, :purchase_order_id, :customer_id, :customer)
+  def purchase_order_line_item_params
+    params.permit(:quantity, :edition_id, :purchase_order_id)
   end
 end
