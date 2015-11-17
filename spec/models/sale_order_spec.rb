@@ -37,6 +37,7 @@ RSpec.describe SaleOrder, type: :model do
 
     it "should calculate discount percentage correctly" do
       @sale_order.update(discount_percent: 10)
+      @sale_order.reload
       expect(@sale_order.total).to eq(Money.new(950))
     end
 
