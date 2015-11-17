@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151112032821) do
+ActiveRecord::Schema.define(version: 20151117024731) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -90,15 +90,6 @@ ActiveRecord::Schema.define(version: 20151112032821) do
   add_index "copies", ["edition_id"], name: "index_copies_on_edition_id", using: :btree
   add_index "copies", ["invoice_line_item_id"], name: "index_copies_on_invoice_line_item_id", using: :btree
   add_index "copies", ["owner_id"], name: "index_copies_on_owner_id", using: :btree
-
-  create_table "customers", force: :cascade do |t|
-    t.string   "name"
-    t.string   "email"
-    t.string   "phone"
-    t.text     "notes"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
   create_table "distributors", force: :cascade do |t|
     t.string   "name"

@@ -30,7 +30,7 @@ class InvoiceLineItem < ActiveRecord::Base
     end
   end
 
-  def potential_special_order_matches 
+  def potential_special_order_matches
     begin
       edition.purchase_order_line_items.joins(:purchase_order).where(:purchase_orders => {:ordered => true}).find_all {|x| ((x.quantity-x.received) >= 0) }
     rescue
