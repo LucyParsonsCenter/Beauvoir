@@ -18,6 +18,8 @@
 # infoshopkeeper import
 *.sql
 
+frontend/node_modules/
+
 
 # minimal Rails specific artifacts
 db/*.sqlite3
