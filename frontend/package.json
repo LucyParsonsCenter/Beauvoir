@@ -1,0 +1,11 @@
+{
+  "name": "beauvoir-frontend",
+  "version": "1.0.0",
+  "description": "The frontend for Beauvoir",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Alice Pote",
+  "license": "GPL-3.0"
+}
