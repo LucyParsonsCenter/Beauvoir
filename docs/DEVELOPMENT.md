@@ -1,5 +1,39 @@
 #Development environment
 
+##Frontend
+
+The frontend for Beauvoir is written in Elm, and lives in the `/frontend`
+directory. If you want to do frontend work you'll need to first install
+the Elm binaries:
+
+```
+npm install -g elm
+elm-package install
+```
+
+then you should be able to do
+
+```
+npm run build
+```
+
+to build the frontend, or
+
+```
+npm run watch
+```
+
+to rebuild on filesave. You can also do
+
+```
+elm-reactor
+```
+
+to open the Elm server/debugger tool.
+
+
+##Backend
+
 There's a Vagrantfile included with Beauvoir. If you want to develop with
 the vm (it's super nice!) you'll need to have a couple things installed.
 
