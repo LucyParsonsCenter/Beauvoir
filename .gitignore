@@ -14,7 +14,10 @@
 /.bundle
 /vendor/bundle/
 /vendor/ruby/
+
+# frontend stuff
 frontend/node_modules
+frontend/bundle.js
 
 # infoshopkeeper import
 *.sql
