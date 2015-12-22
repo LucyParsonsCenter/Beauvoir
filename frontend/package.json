@@ -4,7 +4,8 @@
   "description": "The frontend for Beauvoir, a free point-of-sale app.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack-dev-server --progress --colors"
   },
   "author": "Alice Pote",
   "license": "GPL-3.0\t",
