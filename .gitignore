@@ -14,7 +14,7 @@
 /.bundle
 /vendor/bundle/
 /vendor/ruby/
-frontend/elm-stuff/
+frontend/node_modules
 
 # infoshopkeeper import
 *.sql
