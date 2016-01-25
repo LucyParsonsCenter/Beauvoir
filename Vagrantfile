@@ -54,7 +54,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     export SECRET_TOKEN="f390931c0d2899dc13ca0ca6465903eee6b4e8c1"
 
     bundle exec rake db:setup
-    bundle exec rake db:create
     bundle exec rake db:migrate
     bundle exec rake db:migrate RAILS_ENV="test"
     echo "cd /vagrant" >> ~/.profile
