@@ -23,7 +23,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     apt-get -y update
     apt-get -y upgrade
 
-    apt-get -y install git build-essential cmake ruby-build silversearcher-ag postgresql-9.3 postgresql-server-dev-9.3 postgresql-contrib-9.3 libyaml-dev sqlite3 autoconf libgdbm-dev libncurses5-dev automake libtool bison pkg-config libffi-dev libpq-dev
+    apt-get -y install git build-essential nodejs-legacy npm cmake ruby-build silversearcher-ag postgresql-9.3 postgresql-server-dev-9.3 postgresql-contrib-9.3 libyaml-dev sqlite3 autoconf libgdbm-dev libncurses5-dev automake libtool bison pkg-config libffi-dev libpq-dev
     sudo -u postgres createuser --superuser vagrant
   SCRIPT
 
@@ -60,7 +60,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     echo "cd /vagrant" >> ~/.profile
     echo "done."
 
-    echo "alias dbmigrate='bundle exec rake db:migrate && bundle exec rake db:migrate RAILS_ENV="test"'" >> ~/.bashrc
+    echo "alias dbmigrate='bundle exec rails db:migrate && bundle exec rails db:migrate RAILS_ENV="test"'" >> ~/.bashrc
     echo "alias runspec='bundle exec bin/rspec'" >> ~/.bashrc
   SCRIPT
 end
